@@ -1,0 +1,74 @@
+#addForm, #findForm, #findResults {
+	display: none;
+}
+
+div.allBlogs {
+	border: 1px solid;
+    background-color: white;
+    color: black;
+    margin: 5px 0 5px 0;
+    padding: 10px;
+    width:50%;
+    
+}
+
+div.titlefontstyle{
+	 font-weight: bold;
+	 font-size: 200%;
+}
+
+div.datefontstyle{
+	font-style: italic;
+	font-size: 80%;
+}
+
+div.bodyfontstyle{
+	font-size: 120%;
+	font-family: "Times New Roman";
+	float:left;
+	display:inline;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+li {
+    float: right;
+}
+
+a#addLink.blogref {
+	 float:  left !important;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: grey;
+}
+
+#title {
+    width: 625px;
+    padding: 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+textarea#body {
+	width: 600px;
+	height: 400px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+}

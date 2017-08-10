@@ -1,0 +1,19 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+
+	<persistence-unit name="trialblog">
+		<properties>
+			<!-- Configuring JDBC properties -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/blogview" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="pradeep" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+
+			<!-- Hibernate properties -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+		</properties>
+	</persistence-unit>
+</persistence>
+      

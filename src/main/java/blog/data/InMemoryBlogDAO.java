@@ -14,7 +14,6 @@ import java.util.List;
 
 public class InMemoryBlogDAO implements BlogDAO {
 
-//	Map<Integer, Blog> stock = new HashMap<>();
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("trialblog");
 	EntityManager stock = factory.createEntityManager();
 	

@@ -5,7 +5,7 @@ import blog.api.Comment;
 import java.util.List;
 import blog.api.User;;
 
-public interface BlogDAO {
+public interface IBlogViewDAO {
 	
 	public void post(Blog blog);
 

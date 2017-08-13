@@ -8,13 +8,16 @@ import blog.api.Comment;
 import blog.api.User;
 import blog.api.exception.BlogNotFoundException;
 import blog.api.exception.InvalidBlogException;
-import blog.data.BlogDAO;
+import blog.data.IBlogViewDAO;
 import blog.data.InMemoryBlogDAO;
+import blog.data.MongoDAO;
+
 import java.util.List;;
 
 public class BlogActionImpl implements BlogAction{
-	BlogDAO dao = new InMemoryBlogDAO();
-
+//	IBlogViewDAO dao = new InMemoryBlogDAO();
+	IBlogViewDAO dao = new MongoDAO();
+	
 	@Override
 	public void post(Blog blog) {
 		

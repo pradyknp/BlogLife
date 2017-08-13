@@ -12,7 +12,7 @@ import java.util.List;
 
 
 
-public class InMemoryBlogDAO implements BlogDAO {
+public class InMemoryBlogDAO implements IBlogViewDAO {
 
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("trialblog");
 	EntityManager stock = factory.createEntityManager();

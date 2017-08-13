@@ -16,18 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-@Entity
 public class Blog {
 	
-	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String title;
 	private String body;
-	
-//	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//	@JoinColumn(name="user_id")
-//	private User user;
 	
 	private String username;
 	
@@ -43,10 +36,6 @@ public class Blog {
 	private String modifiedTime;
 	
 	private String category;
-	
-//	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-////	@JoinColumn
-//	private List<Comment> comments;
 	
 	public int getId() {
 		return id;

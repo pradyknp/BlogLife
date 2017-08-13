@@ -13,7 +13,7 @@ import blog.api.BlogAction;
 import blog.api.Comment;
 import blog.api.exception.BlogNotFoundException;
 import blog.api.exception.InvalidBlogException;
-import blog.data.BlogDAO;
+import blog.data.IBlogViewDAO;
 import blog.data.InMemoryBlogDAO;
 
 public class BlogActionTest{

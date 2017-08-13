@@ -15,15 +15,8 @@ public class User {
 	private String pwd;
 	private String mailid;
 	
-//	@Id
-//	@GeneratedValue( strategy=GenerationType.AUTO )
-//	private int id;
-	
 	@Id
 	private String username;
-	
-//	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy="user")
-//	private List<Blog> blog;
 	
 	private String tagLine;
 	

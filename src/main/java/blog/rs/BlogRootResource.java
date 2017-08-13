@@ -30,53 +30,32 @@ public class BlogRootResource {
 
 	@GET
 	@Path("/{blogId}")
-	@Produces({ MediaType.APPLICATION_JSON})
+	@Produces({ MediaType.APPLICATION_JSON })
 	public Response find(@PathParam("blogId") int id) {
-		try {
-			Blog blog = blogAction.view(id);
-			return Response.ok().entity(blog).build();
-		} catch (BlogNotFoundException bnfe) {
-			return Response.status(404).build();
-		} catch (BlogException le) {
-			return Response.status(500).build();
-		}
+		Blog blog = blogAction.view(id);
+		return Response.ok().entity(blog).build();
 	}
-	
+
 	@GET
 	@Path("/getAll")
-	@Produces({ MediaType.APPLICATION_JSON})
+	@Produces({ MediaType.APPLICATION_JSON })
 	public Response findAll() {
-		try {
-			List<Blog> blog = blogAction.viewAll();
-			return Response.ok().entity(blog).build();
-		} catch (BlogNotFoundException bnfe) {
-			return Response.status(404).build();
-		} catch (BlogException le) {
-			return Response.status(500).build();
-		}
+		List<Blog> blog = blogAction.viewAll();
+		return Response.ok().entity(blog).build();
 	}
-	
-	
+
 	@POST
-	@Consumes({ MediaType.APPLICATION_JSON})
-	@Produces({ MediaType.APPLICATION_JSON})
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
 	public Response add(Blog blog) {
-		try {
-			blogAction.post(blog);
-			return Response.ok().entity(blog).header("location", "/blog/" + blog.getId()).build();
-		} catch (InvalidBlogException ibe) {
-			return Response.status(405).build();
-		} catch (DuplicateBlogException dbe) {
-			return Response.status(406).build();
-		} catch (BlogException le) {
-			return Response.status(500).build();
-		}
+		blogAction.post(blog);
+		return Response.ok().entity(blog).header("location", "/blog/" + blog.getId()).build();
 	}
-	
+
 	@POST
 	@Path("/postComment")
-	@Consumes({ MediaType.APPLICATION_JSON})
-	@Produces({ MediaType.APPLICATION_JSON})
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
 	public Response addComment(Comment comment) {
 		try {
 			blogAction.postComment(comment);
@@ -89,12 +68,12 @@ public class BlogRootResource {
 			return Response.status(500).build();
 		}
 	}
-	
+
 	@POST
 	@Path("/createUser")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response createNewUser(User user){
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response createNewUser(User user) {
 		try {
 			blogAction.createUser(user);
 			return Response.ok().entity(user).build();
@@ -106,20 +85,19 @@ public class BlogRootResource {
 			return Response.status(500).build();
 		}
 	}
-	
+
 	@GET
 	@Path("/category")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response findByCriteria(@QueryParam("search")  String search){
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response findByCriteria(@QueryParam("search") String search) {
 		try {
 			List<Blog> blog = blogAction.findByCategory(search);
 			return Response.ok().entity(blog).build();
-		}  catch (BlogNotFoundException bnfe) {
+		} catch (BlogNotFoundException bnfe) {
 			return Response.status(404).build();
 		} catch (BlogException le) {
 			return Response.status(500).build();
 		}
 	}
 }
-

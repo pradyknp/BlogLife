@@ -59,7 +59,7 @@ function main(){
 	
 	 addPost =function(){
 		console.log("in add post");
-		var url = "myBlog/blog";
+		var url = "blog";
 		var title = $("#title").val();
 		var body =  $("#body").val();
 		var category = $('#category option:selected').val();
@@ -101,7 +101,7 @@ function main(){
 		});
 	}
 
-	var url = "myBlog/blog/getAll";
+	var url = "blog/getAll";
 	$.getJSON(url, function(data) {
 		console.log(data);
 		

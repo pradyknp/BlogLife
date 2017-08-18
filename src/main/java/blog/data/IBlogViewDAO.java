@@ -18,4 +18,12 @@ public interface IBlogViewDAO {
 	public void addUser(User user);
 	
 	List<Blog> searchCriteria(String criteria);
+	
+	List<Blog> searchByUsername(String userName);
+	
+	List<Blog> searchByTitle(String title);
+	
+	public void deleteBlogByID(int id);
+	
+	public List<Comment> getComments(int BlogID);
 }

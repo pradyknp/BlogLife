@@ -100,4 +100,50 @@ public class BlogRootResource {
 			return Response.status(500).build();
 		}
 	}
+	
+	@GET
+	@Path("/user")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response findByUser(@QueryParam("search") String search) {
+		try {
+			List<Blog> blog = blogAction.findByUserName(search);
+			return Response.ok().entity(blog).build();
+		} catch (BlogNotFoundException bnfe) {
+			return Response.status(404).build();
+		} catch (BlogException le) {
+			return Response.status(500).build();
+		}
+	}
+	
+	@GET
+	@Path("/title")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response findByTitle(@QueryParam("search") String search) {
+		try {
+			List<Blog> blog = blogAction.findByTitle(search);
+			return Response.ok().entity(blog).build();
+		} catch (BlogNotFoundException bnfe) {
+			return Response.status(404).build();
+		} catch (BlogException le) {
+			return Response.status(500).build();
+		}
+	}
+	
+	@GET
+	@Path("/delete/{blogId}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response deleteBlog(@PathParam("blogId") int blogId) {
+		blogAction.deleteBlog(blogId);
+		return Response.ok().build();
+	}
+	
+	@GET
+	@Path("/getComments")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getCommentforBlog(@QueryParam("blogId") int blogId) {
+		List<Comment> comment= blogAction.gettheComments(blogId);
+		return Response.ok().entity(comment).build();
+	}
 }

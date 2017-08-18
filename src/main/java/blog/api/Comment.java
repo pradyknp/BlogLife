@@ -1,19 +1,14 @@
 package blog.api;
 
 import java.sql.Date;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlRootElement;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 @Entity
 public class Comment {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
 	private String body;
 	private String username;
 	private Date createdDate;

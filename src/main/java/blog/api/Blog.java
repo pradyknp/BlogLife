@@ -1,23 +1,13 @@
 package blog.api;
 
 import java.sql.Date;
-import java.sql.Time;
-import java.util.List;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
+@Entity
 public class Blog {
 	
+	@Id
 	private int id;
 	private String title;
 	private String body;

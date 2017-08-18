@@ -10,13 +10,13 @@ import blog.api.exception.BlogNotFoundException;
 import blog.api.exception.InvalidBlogException;
 import blog.data.IBlogViewDAO;
 import blog.data.InMemoryBlogDAO;
-import blog.data.MongoDAO;
+import blog.data.MongoDAOImpl;
 
 import java.util.List;;
 
 public class BlogActionImpl implements BlogAction{
 //	IBlogViewDAO dao = new InMemoryBlogDAO();
-	IBlogViewDAO dao = new MongoDAO();
+	IBlogViewDAO dao = new MongoDAOImpl();
 	
 	@Override
 	public void post(Blog blog) {
@@ -84,4 +84,36 @@ public class BlogActionImpl implements BlogAction{
 		
 		return blogs;
 	}
+
+	@Override
+	public List<Blog> findByUserName(String userName) {
+		List<Blog> blogs = dao.searchByUsername(userName);
+		
+		if(blogs == null)
+			throw new BlogNotFoundException();
+		
+		return blogs;
+	}
+
+	@Override
+	public List<Blog> findByTitle(String title) {
+	List<Blog> blogs = dao.searchByTitle(title);
+		
+		if(blogs == null)
+			throw new BlogNotFoundException();
+		
+		return blogs;
+	}
+
+	@Override
+	public void deleteBlog(int blogId) {
+		dao.deleteBlogByID(blogId);
+	}
+
+	@Override
+	public List<Comment> gettheComments(int BlogID) {
+		 return dao.getComments(BlogID);
+	}
+	
+	
 }

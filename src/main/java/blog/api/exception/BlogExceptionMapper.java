@@ -9,16 +9,17 @@ public class BlogExceptionMapper implements ExceptionMapper<BlogException>{
 
 	@Override
 	public Response toResponse(BlogException blogExp) {
+		Response.Status httpStatus = Response.Status.INTERNAL_SERVER_ERROR;
 		 if (blogExp instanceof BlogNotFoundException){
-			 return Response.status(404).build();
+	 			httpStatus = Response.Status.NOT_FOUND;
 		 }
 		 if (blogExp instanceof InvalidBlogException){
-			 return Response.status(405).build();
+	 			httpStatus = Response.Status.NOT_ACCEPTABLE;
 		 }
 		 if (blogExp instanceof DuplicateBlogException){
-			 return Response.status(406).build();
+	 			httpStatus = Response.Status.CONFLICT;
 		 }
-		 return Response.status(500).build();
+			return Response.status(httpStatus).entity(blogExp.getMessage()).build();
 	}
 }
 

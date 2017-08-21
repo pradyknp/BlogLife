@@ -89,4 +89,10 @@ public class MongoDAOImpl implements IBlogViewDAO{
 		Blog updateBlog = blogDAO.updateBlog(blog);
 		return updateBlog;
 	}
+
+	@Override
+	public List<Blog> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

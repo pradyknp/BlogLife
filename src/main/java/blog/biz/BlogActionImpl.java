@@ -11,15 +11,42 @@ import blog.api.exception.CommentException;
 import blog.api.exception.CommentNotFoundException;
 import blog.api.exception.InvalidBlogException;
 import blog.api.exception.InvalidUserException;
+import blog.api.exception.UserException;
+import blog.api.exception.UserNotFoundException;
+import blog.data.BlogDAO;
+import blog.data.CommentDAO;
 import blog.data.IBlogViewDAO;
 import blog.data.InMemoryBlogDAO;
 import blog.data.MongoDAOImpl;
+import blog.data.UserDAO;
+
+import java.util.Comparator;
+import java.util.List;
+
+import org.hibernate.query.criteria.internal.compile.CriteriaQueryTypeQueryAdapter;
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.query.Query;
+
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
 
 import java.util.List;;
 
 public class BlogActionImpl implements BlogAction{
 //	IBlogViewDAO dao = new InMemoryBlogDAO();
-	IBlogViewDAO dao = new MongoDAOImpl();
+//	IBlogViewDAO dao = new MongoDAOImpl();
+	
+	MongoClient mongoClient = new MongoClient("localhost"); //27017
+	Morphia morphia = new Morphia();
+	String databaseName = "blogview";
+	Datastore datastore = morphia.createDatastore(mongoClient, databaseName);
+	
+	
+	BlogDAO blogDAO = new BlogDAO(Blog.class, datastore);
+	CommentDAO commentDAO = new CommentDAO(Comment.class,datastore);
+	UserDAO userDAO = new UserDAO(User.class,datastore);
 	
 	@Override
 	public void post(Blog blog) {
@@ -27,18 +54,18 @@ public class BlogActionImpl implements BlogAction{
 		if(blog == null || blog.getId() < 1 || blog.getTitle() == null || blog.getTitle().trim().length()==0 || blog.getTitle().trim().length() > 64 || blog.getBody().trim().length() == 0)
 			throw new InvalidBlogException();
 		
-		dao.post(blog);
+		blogDAO.save(blog);
 	}
 
 	@Override
 	public Blog updateBlog(Blog blog) {
-		Blog blogOld= dao.read(blog.getId());
+		Blog blogOld= (Blog)blogDAO.get(blog.getId());
 		
 		if(blogOld == null)
 			throw new BlogNotFoundException();
 		
-		dao.deleteBlogByID(blogOld.getId());
-		dao.post(blog);
+		blogDAO.deleteBlogUsingID(blogOld.getId());
+		blogDAO.save(blog);
 		
 		return blog;
 	}
@@ -46,7 +73,7 @@ public class BlogActionImpl implements BlogAction{
 	@Override
 	public Blog view(int blogId) {
 		
-		Blog blog= dao.read(blogId);
+		Blog blog= (Blog)blogDAO.get(blogId);
 		if(blog == null)
 			throw new BlogNotFoundException();
 		
@@ -58,13 +85,13 @@ public class BlogActionImpl implements BlogAction{
 		if(comment == null)
 			throw new BlogNotFoundException();
 		
-		dao.addComment(comment);
+		commentDAO.save(comment);
 		
 	}
 	
 	@Override
 	public List<Blog> viewAll() {
-		List<Blog> blogs = dao.readAll();
+		List<Blog> blogs = blogDAO.find().asList();
 		
 		if(blogs == null)
 			throw new BlogNotFoundException();
@@ -77,12 +104,12 @@ public class BlogActionImpl implements BlogAction{
 		if(user == null || user.getPwd() == null || user.getMailid() == null || user.getUsername() == null)
 			throw new InvalidUserException();
 		
-		dao.addUser(user);
+		userDAO.save(user);
 	}
 	
 	@Override
 	public List<Blog> findByCategory(String category) {
-		List<Blog> blogs = dao.searchCriteria(category);
+		List<Blog> blogs = blogDAO.searchByCriteria(category);
 		
 		if(blogs == null)
 			throw new BlogNotFoundException();
@@ -92,7 +119,7 @@ public class BlogActionImpl implements BlogAction{
 
 	@Override
 	public List<Blog> findByUserName(String userName) {
-		List<Blog> blogs = dao.searchByUsername(userName);
+		List<Blog> blogs =blogDAO.searchByUser(userName);
 		
 		if(blogs == null)
 			throw new BlogNotFoundException();
@@ -102,7 +129,7 @@ public class BlogActionImpl implements BlogAction{
 
 	@Override
 	public List<Blog> findByTitle(String title) {
-	List<Blog> blogs = dao.searchByTitle(title);
+	List<Blog> blogs = blogDAO.searchByTitle(title);
 		
 		if(blogs == null)
 			throw new BlogNotFoundException();
@@ -112,18 +139,24 @@ public class BlogActionImpl implements BlogAction{
 
 	@Override
 	public void deleteBlog(int blogId) {
-		dao.deleteBlogByID(blogId);
+		blogDAO.deleteBlogUsingID(blogId);
 	}
 
 	@Override
 	public List<Comment> gettheComments(int BlogID) {
-		 return dao.getComments(BlogID);
+		 return commentDAO.getCommentsforBlog(BlogID);
 	}
 
 	@Override
 	public void deleteComment(int commentID) {
-		dao.deletComment(commentID);
+		commentDAO.deleteCommentUsingID(commentID);
 		
+	}
+
+	@Override
+	public List<User> getAllUsers(){
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

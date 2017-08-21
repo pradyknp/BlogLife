@@ -13,6 +13,7 @@ import blog.api.exception.InvalidBlogException;
 import blog.api.exception.InvalidUserException;
 import blog.api.exception.UserAlreadyExistsException;
 import blog.api.exception.UserException;
+import blog.api.exception.UserNotFoundException;
 
 import java.util.List;
 import blog.api.User;
@@ -41,4 +42,6 @@ public interface BlogAction {
 	List<Comment> gettheComments(int BlogID) throws CommentNotFoundException,CommentException;
 	
 	void deleteComment(int commentID) throws CommentNotFoundException,CommentException;
+	
+	List<User> getAllUsers() throws UserNotFoundException,UserException;
 }

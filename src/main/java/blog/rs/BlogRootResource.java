@@ -156,4 +156,14 @@ public class BlogRootResource {
 		List<Comment> comment= blogAction.gettheComments(blogId);
 		return Response.ok().entity(comment).build();
 	}
+	
+	@GET
+	@Path("/users/getAll")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getAllUsers() {
+		List<User> user= blogAction.getAllUsers();
+		return Response.ok().entity(user).build();
+	}
+	
+	
 }

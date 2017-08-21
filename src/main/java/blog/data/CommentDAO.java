@@ -22,4 +22,8 @@ public class CommentDAO extends BasicDAO<Comment, Integer> {
 		Query<Comment> query = createQuery().filter("blogId =", blogId);
 		return query.asList();
 	}
+	
+	public void deleteCommentUsingID(int commentID){
+		deleteById(commentID);
+	}
 }

@@ -32,4 +32,8 @@ public class BlogDAO extends BasicDAO<Blog, Integer> {
 	public void deleteBlogUsingID(int id){
 		deleteById(id);
 	}
+	
+	public Blog updateBlog(Blog blog){
+		return null;
+	}
 }

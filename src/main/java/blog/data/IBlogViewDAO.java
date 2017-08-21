@@ -26,4 +26,8 @@ public interface IBlogViewDAO {
 	public void deleteBlogByID(int id);
 	
 	public List<Comment> getComments(int BlogID);
+	
+	public void deletComment(int CommentID);
+	
+	public Blog updateBlog(Blog blog);
 }

@@ -7,6 +7,8 @@ import blog.api.BlogAction;
 import blog.api.Comment;
 import blog.api.User;
 import blog.api.exception.BlogNotFoundException;
+import blog.api.exception.CommentException;
+import blog.api.exception.CommentNotFoundException;
 import blog.api.exception.InvalidBlogException;
 import blog.data.IBlogViewDAO;
 import blog.data.InMemoryBlogDAO;
@@ -28,12 +30,14 @@ public class BlogActionImpl implements BlogAction{
 	}
 
 	@Override
-	public Blog update(Blog blog) {
-		Blog blogupdate= dao.read(blog.getId());
-		if(blogupdate == null)
+	public Blog updateBlog(Blog blog) {
+		Blog blogOld= dao.read(blog.getId());
+		
+		if(blogOld == null)
 			throw new BlogNotFoundException();
 		
-		dao.post(blogupdate);
+		dao.deleteBlogByID(blogOld.getId());
+		dao.post(blog);
 		
 		return blog;
 	}
@@ -113,6 +117,12 @@ public class BlogActionImpl implements BlogAction{
 	@Override
 	public List<Comment> gettheComments(int BlogID) {
 		 return dao.getComments(BlogID);
+	}
+
+	@Override
+	public void deleteComment(int commentID) {
+		dao.deletComment(commentID);
+		
 	}
 	
 	

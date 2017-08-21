@@ -1,5 +1,6 @@
 package blog.data;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.hibernate.query.criteria.internal.compile.CriteriaQueryTypeQueryAdapter;
@@ -67,13 +68,25 @@ public class MongoDAOImpl implements IBlogViewDAO{
 }
 
 	@Override
-	public void deleteBlogByID (int id) {
-		blogDAO.deleteBlogUsingID(id);
+	public void deleteBlogByID (int blogId) {
+		blogDAO.deleteBlogUsingID(blogId);
 		
 	}
 
 	@Override
 	public List<Comment> getComments(int BlogID) {
 		return commentDAO.getCommentsforBlog(BlogID);
+	};
+
+	@Override
+	public void deletComment(int commentID) {
+		commentDAO.deleteCommentUsingID(commentID);
+		
+	}
+
+	@Override
+	public Blog updateBlog(Blog blog) {
+		Blog updateBlog = blogDAO.updateBlog(blog);
+		return updateBlog;
 	}
 }

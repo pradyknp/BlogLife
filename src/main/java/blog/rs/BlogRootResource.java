@@ -47,8 +47,17 @@ public class BlogRootResource {
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response add(Blog blog) {
+	public Response addBlog(Blog blog) {
 		blogAction.post(blog);
+		return Response.ok().entity(blog).header("location", "/blog/" + blog.getId()).build();
+	}
+
+	@POST
+	@Path("/updateBlog")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response updateBlog(Blog blog) {
+		blogAction.updateBlog(blog);
 		return Response.ok().entity(blog).header("location", "/blog/" + blog.getId()).build();
 	}
 

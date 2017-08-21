@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import blog.api.exception.BlogException;
 import blog.api.exception.BlogNotFoundException;
+import blog.api.exception.CommentException;
+import blog.api.exception.CommentNotFoundException;
 import blog.api.exception.DuplicateBlogException;
 import blog.api.exception.InvalidBlogException;
 import blog.api.exception.InvalidUserException;
@@ -18,7 +20,7 @@ import blog.api.User;
 public interface BlogAction {
 	void post(Blog blog) throws DuplicateBlogException,InvalidBlogException, BlogException;
 	
-	Blog update(Blog blog) throws BlogNotFoundException,InvalidBlogException,BlogException;
+	Blog updateBlog(Blog blog) throws BlogNotFoundException,InvalidBlogException,BlogException;
 	
 	Blog view(int blogId) throws DuplicateBlogException,InvalidBlogException,BlogException;
 	
@@ -36,5 +38,7 @@ public interface BlogAction {
 	
 	List<Blog> findByTitle(String title) throws BlogNotFoundException,InvalidBlogException,BlogException;
 	
-	List<Comment> gettheComments(int BlogID);
+	List<Comment> gettheComments(int BlogID) throws CommentNotFoundException,CommentException;
+	
+	void deleteComment(int commentID) throws CommentNotFoundException,CommentException;
 }

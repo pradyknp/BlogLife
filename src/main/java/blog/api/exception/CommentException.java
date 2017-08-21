@@ -1,6 +1,6 @@
 package blog.api.exception;
 
-public class CommentException extends RuntimeException {
+public class CommentException extends BlogException {
 
 	public CommentException() {
 		// TODO Auto-generated constructor stub

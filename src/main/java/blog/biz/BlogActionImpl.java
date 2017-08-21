@@ -135,7 +135,63 @@ public class BlogActionImpl implements BlogAction {
 
 		return blogs;
 	}
+	
+	@Override
+	public Blog blogLike(int blogId) throws BlogNotFoundException, InvalidBlogException, BlogException {
 
+		Blog blog = (Blog) blogDAO.get(blogId);
+		if (blog == null)
+			throw new BlogNotFoundException();
+		
+		blogDAO.deleteBlogUsingID(blog.getId());
+		blog.setLikes();
+		blogDAO.save(blog);
+
+		return blog;
+		
+	}
+	
+	@Override
+	public Blog blogUnLike(int blogId) throws BlogNotFoundException, InvalidBlogException, BlogException {
+		// TODO Auto-generated method stub
+		Blog blog = (Blog) blogDAO.get(blogId);
+		if (blog == null)
+			throw new BlogNotFoundException();
+		
+		blogDAO.deleteBlogUsingID(blog.getId());
+		blog.setUnLikes();
+		blogDAO.save(blog);
+
+		return blog;
+	}
+
+	
+	@Override
+	public Blog blogDisLike(int blogId) throws BlogNotFoundException, InvalidBlogException, BlogException {
+		Blog blog = (Blog) blogDAO.get(blogId);
+		if (blog == null)
+			throw new BlogNotFoundException();
+		
+		blogDAO.deleteBlogUsingID(blog.getId());
+		blog.setDislikes();
+		blogDAO.save(blog);
+
+		return blog;
+	}
+	
+	@Override
+	public Blog blogUnDisLike(int blogId) throws BlogNotFoundException, InvalidBlogException, BlogException {
+		Blog blog = (Blog) blogDAO.get(blogId);
+		if (blog == null)
+			throw new BlogNotFoundException();
+		
+		blogDAO.deleteBlogUsingID(blog.getId());
+		blog.setUnDislikes();
+		blogDAO.save(blog);
+
+		return blog;
+	}
+	
 	@Override
 	public void deleteBlog(int blogId) throws BlogNotFoundException,BlogException {
 		blogDAO.deleteBlogUsingID(blogId);

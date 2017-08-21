@@ -34,6 +34,14 @@ public interface BlogAction {
 	
 	List<Blog> findByTitle(String title,int pageno,int pagesize) throws BlogNotFoundException,InvalidBlogException,BlogException;
 	
+	Blog blogLike(int blogId) throws BlogNotFoundException,InvalidBlogException,BlogException;
+	
+	Blog blogUnLike(int blogId) throws BlogNotFoundException,InvalidBlogException,BlogException;
+	
+	Blog blogDisLike(int blogId) throws BlogNotFoundException,InvalidBlogException,BlogException;
+	
+	Blog blogUnDisLike(int blogId) throws BlogNotFoundException,InvalidBlogException,BlogException;
+	
 	void deleteBlog(int blogId) throws BlogNotFoundException,BlogException;
 	
 	void postComment(Comment comment) throws InvalidCommentException,CommentException;

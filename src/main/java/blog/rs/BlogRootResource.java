@@ -180,4 +180,64 @@ public class BlogRootResource {
 		blogAction.deleteUser(username);
 		return Response.ok().build();
 	}
+	
+	@POST
+	@Path("blog/{blogId}/like")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response addLike(@PathParam("blogId") int blogId) {
+		try {
+			Blog blog = blogAction.blogLike(blogId);
+			return Response.ok().entity(blog).build();
+		} catch (BlogNotFoundException bnfe) {
+			return Response.status(404).build();
+		} catch (BlogException le) {
+			return Response.status(500).build();
+		}
+	}
+	
+	@POST
+	@Path("blog/{blogId}/unlike")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response addUnLike(@PathParam("blogId") int blogId) {
+		try {
+			Blog blog = blogAction.blogUnLike(blogId);
+			return Response.ok().entity(blog).build();
+		} catch (BlogNotFoundException bnfe) {
+			return Response.status(404).build();
+		} catch (BlogException le) {
+			return Response.status(500).build();
+		}
+	}
+	
+	@POST
+	@Path("blog/{blogId}/dislike")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response addDisLike(@PathParam("blogId") int blogId) {
+		try {
+			Blog blog = blogAction.blogDisLike(blogId);
+			return Response.ok().entity(blog).build();
+		}catch (BlogNotFoundException bnfe) {
+			return Response.status(404).build();
+		} catch (BlogException le) {
+			return Response.status(500).build();
+		}
+	}
+	
+	@POST
+	@Path("blog/{blogId}/undislike")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response addUnDisLike(@PathParam("blogId") int blogId) {
+		try {
+			Blog blog = blogAction.blogUnDisLike(blogId);
+			return Response.ok().entity(blog).build();
+		}catch (BlogNotFoundException bnfe) {
+			return Response.status(404).build();
+		} catch (BlogException le) {
+			return Response.status(500).build();
+		}
+	}
 }

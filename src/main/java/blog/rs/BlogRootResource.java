@@ -39,8 +39,8 @@ public class BlogRootResource {
 	@GET
 	@Path("/blog/getAll")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response findAll() {
-		List<Blog> blog = blogAction.viewAll();
+	public Response findAll(@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
+		List<Blog> blog = blogAction.viewAll(pageno,pagesize);
 		return Response.ok().entity(blog).build();
 	}
 
@@ -97,12 +97,12 @@ public class BlogRootResource {
 	}
 
 	@GET
-	@Path("/blog/category")
+	@Path("/blog/category/{category}")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response findByCriteria(@QueryParam("search") String search) {
+	public Response findByCriteria(@PathParam("category") String category,@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
 		try {
-			List<Blog> blog = blogAction.findByCategory(search);
+			List<Blog> blog = blogAction.findByCategory(category,pageno,pagesize);
 			return Response.ok().entity(blog).build();
 		} catch (BlogNotFoundException bnfe) {
 			return Response.status(404).build();
@@ -112,12 +112,12 @@ public class BlogRootResource {
 	}
 	
 	@GET
-	@Path("/blog/user")
+	@Path("/blog/user/{username}")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response findByUser(@QueryParam("search") String search) {
+	public Response findByUser(@PathParam("username") String username,@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
 		try {
-			List<Blog> blog = blogAction.findByUserName(search);
+			List<Blog> blog = blogAction.findByUserName(username,pageno,pagesize);
 			return Response.ok().entity(blog).build();
 		} catch (BlogNotFoundException bnfe) {
 			return Response.status(404).build();
@@ -130,9 +130,9 @@ public class BlogRootResource {
 	@Path("/blog/title")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response findByTitle(@QueryParam("search") String search) {
+	public Response findByTitle(@QueryParam("search") String search,@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
 		try {
-			List<Blog> blog = blogAction.findByTitle(search);
+			List<Blog> blog = blogAction.findByTitle(search,pageno,pagesize);
 			return Response.ok().entity(blog).build();
 		} catch (BlogNotFoundException bnfe) {
 			return Response.status(404).build();
@@ -165,5 +165,19 @@ public class BlogRootResource {
 		return Response.ok().entity(user).build();
 	}
 	
+	@GET
+	@Path("/user/{user}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getUser(@PathParam("user") String username) {
+		User user= blogAction.getuserByUserName(username);
+		return Response.ok().entity(user).build();
+	}
 	
+	@GET
+	@Path("/user/delete/{user}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response deletetUser(@PathParam("user") String username) {
+		blogAction.deleteUser(username);
+		return Response.ok().build();
+	}
 }

@@ -10,6 +10,7 @@ import blog.api.exception.CommentException;
 import blog.api.exception.CommentNotFoundException;
 import blog.api.exception.DuplicateBlogException;
 import blog.api.exception.InvalidBlogException;
+import blog.api.exception.InvalidCommentException;
 import blog.api.exception.InvalidUserException;
 import blog.api.exception.UserAlreadyExistsException;
 import blog.api.exception.UserException;
@@ -25,23 +26,28 @@ public interface BlogAction {
 	
 	Blog view(int blogId) throws DuplicateBlogException,InvalidBlogException,BlogException;
 	
-	void postComment(Comment comment) ;
+	List<Blog> viewAll(int pageno,int pagesize) throws BlogNotFoundException,InvalidBlogException,BlogException;
 	
-	List<Blog> viewAll() throws BlogNotFoundException,InvalidBlogException,BlogException;
+	List<Blog> findByCategory(String category,int pageno,int pagesize) throws BlogNotFoundException,InvalidBlogException,BlogException;
 	
-	List<Blog> findByCategory(String category) throws BlogNotFoundException,InvalidBlogException,BlogException;
+	List<Blog> findByUserName(String userName,int pageno,int pagesize) throws BlogNotFoundException,InvalidBlogException,BlogException;
 	
-	void createUser(User user) throws UserAlreadyExistsException,InvalidUserException,UserException;
+	List<Blog> findByTitle(String title,int pageno,int pagesize) throws BlogNotFoundException,InvalidBlogException,BlogException;
 	
 	void deleteBlog(int blogId) throws BlogNotFoundException,BlogException;
 	
-	List<Blog> findByUserName(String userName) throws BlogNotFoundException,InvalidBlogException,BlogException;
-	
-	List<Blog> findByTitle(String title) throws BlogNotFoundException,InvalidBlogException,BlogException;
+	void postComment(Comment comment) throws InvalidCommentException,CommentException;
 	
 	List<Comment> gettheComments(int BlogID) throws CommentNotFoundException,CommentException;
 	
 	void deleteComment(int commentID) throws CommentNotFoundException,CommentException;
 	
+	void createUser(User user) throws UserAlreadyExistsException,InvalidUserException,UserException;
+	
 	List<User> getAllUsers() throws UserNotFoundException,UserException;
+	
+	User getuserByUserName(String username) throws UserNotFoundException,UserException;
+	
+	void deleteUser(String username) throws UserNotFoundException,UserException;
+	
 }

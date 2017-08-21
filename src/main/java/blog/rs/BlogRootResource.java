@@ -24,12 +24,12 @@ import blog.api.exception.UserException;
 import blog.biz.BlogActionImpl;
 import java.util.List;
 
-@Path("/blog")
+@Path("")
 public class BlogRootResource {
 	static BlogAction blogAction = new BlogActionImpl();
 
 	@GET
-	@Path("/{blogId}")
+	@Path("/blog/{blogId}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response find(@PathParam("blogId") int id) {
 		Blog blog = blogAction.view(id);
@@ -37,7 +37,7 @@ public class BlogRootResource {
 	}
 
 	@GET
-	@Path("/getAll")
+	@Path("/blog/getAll")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response findAll() {
 		List<Blog> blog = blogAction.viewAll();
@@ -45,6 +45,7 @@ public class BlogRootResource {
 	}
 
 	@POST
+	@Path("/blog")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response addBlog(Blog blog) {
@@ -53,7 +54,7 @@ public class BlogRootResource {
 	}
 
 	@POST
-	@Path("/updateBlog")
+	@Path("/blog/updateBlog")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response updateBlog(Blog blog) {
@@ -62,7 +63,7 @@ public class BlogRootResource {
 	}
 
 	@POST
-	@Path("/postComment")
+	@Path("/blog/postComment")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response addComment(Comment comment) {
@@ -96,7 +97,7 @@ public class BlogRootResource {
 	}
 
 	@GET
-	@Path("/category")
+	@Path("/blog/category")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response findByCriteria(@QueryParam("search") String search) {
@@ -111,7 +112,7 @@ public class BlogRootResource {
 	}
 	
 	@GET
-	@Path("/user")
+	@Path("/blog/user")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response findByUser(@QueryParam("search") String search) {
@@ -126,7 +127,7 @@ public class BlogRootResource {
 	}
 	
 	@GET
-	@Path("/title")
+	@Path("/blog/title")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response findByTitle(@QueryParam("search") String search) {
@@ -141,7 +142,7 @@ public class BlogRootResource {
 	}
 	
 	@GET
-	@Path("/delete/{blogId}")
+	@Path("/blog/delete/{blogId}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response deleteBlog(@PathParam("blogId") int blogId) {
 		blogAction.deleteBlog(blogId);
@@ -149,7 +150,7 @@ public class BlogRootResource {
 	}
 	
 	@GET
-	@Path("/getComments")
+	@Path("/blog/getComments")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response getCommentforBlog(@QueryParam("blogId") int blogId) {
 		List<Comment> comment= blogAction.gettheComments(blogId);

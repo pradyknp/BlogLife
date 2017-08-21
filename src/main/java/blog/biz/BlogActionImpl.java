@@ -10,6 +10,7 @@ import blog.api.exception.BlogNotFoundException;
 import blog.api.exception.CommentException;
 import blog.api.exception.CommentNotFoundException;
 import blog.api.exception.InvalidBlogException;
+import blog.api.exception.InvalidUserException;
 import blog.data.IBlogViewDAO;
 import blog.data.InMemoryBlogDAO;
 import blog.data.MongoDAOImpl;
@@ -74,7 +75,7 @@ public class BlogActionImpl implements BlogAction{
 	@Override
 	public void createUser(User user) {
 		if(user == null || user.getPwd() == null || user.getMailid() == null || user.getUsername() == null)
-			throw new InvalidBlogException();
+			throw new InvalidUserException();
 		
 		dao.addUser(user);
 	}

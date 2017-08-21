@@ -182,6 +182,7 @@ public class BlogActionImpl implements BlogAction {
 	@Override
 	public Blog blogUnDisLike(int blogId) throws BlogNotFoundException, InvalidBlogException, BlogException {
 		Blog blog = (Blog) blogDAO.get(blogId);
+		
 		if (blog == null)
 			throw new BlogNotFoundException();
 		
@@ -219,8 +220,10 @@ public class BlogActionImpl implements BlogAction {
 
 	@Override
 	public void createUser(User user) throws UserAlreadyExistsException,InvalidUserException,UserException {
+		
 		if (user == null || user.getPwd() == null || user.getMailid() == null || user.getUsername() == null)
 			throw new InvalidUserException();
+		
 		User userExists = (User) userDAO.get(user.getUsername());
 
 		if (userExists != null)
@@ -239,8 +242,9 @@ public class BlogActionImpl implements BlogAction {
 	@Override
 	public User getuserByUserName(String username) throws UserNotFoundException,UserException {
 		User user = (User) userDAO.get(username);
+		
 		if (user == null)
-			throw new BlogNotFoundException();
+			throw new UserNotFoundException("User cannot be found");
 
 		return user;
 	}

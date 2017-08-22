@@ -49,16 +49,16 @@ public class CommentTest {
 	@Test
 	public void testGetSetCreatedDate() throws Exception {
 		Date date = new Date(0);
-		toTest.setCreatedDate(date);
-		assertEquals(toTest.getCreatedDate(), date);
+		toTest.setCreatedDate(date.toString());
+		assertEquals(toTest.getCreatedDate(), date.toString());
 
 	}
 	
 	@Test
 	public void testGetSetModifiedDate() throws Exception {
 		Date date = new Date(10);
-		toTest.setModifiedDate(date);
-		assertEquals(toTest.getModifiedDate(), date);
+		toTest.setModifiedDate(date.toString());
+		assertEquals(toTest.getModifiedDate(), date.toString());
 
 	}
 	

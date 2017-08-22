@@ -39,8 +39,8 @@ public class BlogRootResource {
 	@GET
 	@Path("/blog/getAll")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response findAll() {
-		List<Blog> blog = blogAction.viewAll();
+	public Response findAll(@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
+		List<Blog> blog = blogAction.viewAll(pageno,pagesize);
 		return Response.ok().entity(blog).build();
 	}
 
@@ -67,16 +67,8 @@ public class BlogRootResource {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response addComment(Comment comment) {
-		try {
 			blogAction.postComment(comment);
 			return Response.ok().entity(comment).build();
-		} catch (InvalidBlogException ibe) {
-			return Response.status(405).build();
-		} catch (DuplicateBlogException dbe) {
-			return Response.status(406).build();
-		} catch (BlogException le) {
-			return Response.status(500).build();
-		}
 	}
 
 	@POST
@@ -84,61 +76,35 @@ public class BlogRootResource {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response createNewUser(User user) {
-		try {
 			blogAction.createUser(user);
 			return Response.ok().entity(user).build();
-		} catch (InvalidUserException ibe) {
-			return Response.status(405).build();
-		} catch (UserAlreadyExistsException dbe) {
-			return Response.status(406).build();
-		} catch (UserException le) {
-			return Response.status(500).build();
-		}
 	}
 
 	@GET
-	@Path("/blog/category")
+	@Path("/blog/category/{category}")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response findByCriteria(@QueryParam("search") String search) {
-		try {
-			List<Blog> blog = blogAction.findByCategory(search);
+	public Response findByCriteria(@PathParam("category") String category,@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
+			List<Blog> blog = blogAction.findByCategory(category,pageno,pagesize);
 			return Response.ok().entity(blog).build();
-		} catch (BlogNotFoundException bnfe) {
-			return Response.status(404).build();
-		} catch (BlogException le) {
-			return Response.status(500).build();
-		}
 	}
 	
 	@GET
-	@Path("/blog/user")
+	@Path("/blog/user/{username}")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response findByUser(@QueryParam("search") String search) {
-		try {
-			List<Blog> blog = blogAction.findByUserName(search);
+	public Response findByUser(@PathParam("username") String username,@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
+			List<Blog> blog = blogAction.findByUserName(username,pageno,pagesize);
 			return Response.ok().entity(blog).build();
-		} catch (BlogNotFoundException bnfe) {
-			return Response.status(404).build();
-		} catch (BlogException le) {
-			return Response.status(500).build();
-		}
 	}
 	
 	@GET
 	@Path("/blog/title")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response findByTitle(@QueryParam("search") String search) {
-		try {
-			List<Blog> blog = blogAction.findByTitle(search);
+	public Response findByTitle(@QueryParam("search") String search,@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
+			List<Blog> blog = blogAction.findByTitle(search,pageno,pagesize);
 			return Response.ok().entity(blog).build();
-		} catch (BlogNotFoundException bnfe) {
-			return Response.status(404).build();
-		} catch (BlogException le) {
-			return Response.status(500).build();
-		}
 	}
 	
 	@GET
@@ -155,5 +121,65 @@ public class BlogRootResource {
 	public Response getCommentforBlog(@QueryParam("blogId") int blogId) {
 		List<Comment> comment= blogAction.gettheComments(blogId);
 		return Response.ok().entity(comment).build();
+	}
+	
+	@GET
+	@Path("/users/getAll")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getAllUsers() {
+		List<User> user= blogAction.getAllUsers();
+		return Response.ok().entity(user).build();
+	}
+	
+	@GET
+	@Path("/user/{user}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getUser(@PathParam("user") String username) {
+		User user= blogAction.getuserByUserName(username);
+		return Response.ok().entity(user).build();
+	}
+	
+	@GET
+	@Path("/user/delete/{user}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response deletetUser(@PathParam("user") String username) {
+		blogAction.deleteUser(username);
+		return Response.ok().build();
+	}
+	
+	@POST
+	@Path("blog/{blogId}/like")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response addLike(@PathParam("blogId") int blogId) {
+			Blog blog = blogAction.blogLike(blogId);
+			return Response.ok().entity(blog).build();
+	}
+	
+	@POST
+	@Path("blog/{blogId}/unlike")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response addUnLike(@PathParam("blogId") int blogId) {
+			Blog blog = blogAction.blogUnLike(blogId);
+			return Response.ok().entity(blog).build();
+	}
+	
+	@POST
+	@Path("blog/{blogId}/dislike")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response addDisLike(@PathParam("blogId") int blogId) {
+			Blog blog = blogAction.blogDisLike(blogId);
+			return Response.ok().entity(blog).build();
+	}
+	
+	@POST
+	@Path("blog/{blogId}/undislike")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response addUnDisLike(@PathParam("blogId") int blogId) {
+			Blog blog = blogAction.blogUnDisLike(blogId);
+			return Response.ok().entity(blog).build();
 	}
 }

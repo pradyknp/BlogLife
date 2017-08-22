@@ -30,4 +30,6 @@ public interface IBlogViewDAO {
 	public void deletComment(int CommentID);
 	
 	public Blog updateBlog(Blog blog);
+	
+	List<Blog> getAllUsers();
 }

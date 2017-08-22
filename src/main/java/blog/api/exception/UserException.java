@@ -1,6 +1,6 @@
 package blog.api.exception;
 
-public class UserException extends RuntimeException {
+public class UserException extends BlogException {
 	public UserException() {
 		// TODO Auto-generated constructor stub
 	}

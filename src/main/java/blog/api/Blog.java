@@ -1,6 +1,5 @@
 package blog.api;
 
-import java.sql.Date;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
@@ -14,18 +13,36 @@ public class Blog {
 	
 	private String username;
 	
-	public String getUsername() {
-		return username;
-	}
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	private Date createdDate;
-	private Date modifiedDate;
+	private String createdDate;
+	private String modifiedDate;
 	private String modifiedTime;
 	
 	private String category;
+	private int likes = 0;
+	private int dislikes = 0;
+	
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes() {
+		this.likes++;
+	}
+	
+	public void setUnLikes() {
+		this.likes--;
+	}
+	
+	public int getDislikes() {
+		return dislikes;
+	}
+	
+	public void setDislikes() {
+		this.dislikes++;
+	}
+	
+	public void setUnDislikes() {
+		this.dislikes--;
+	}
 	
 	public int getId() {
 		return id;
@@ -46,16 +63,24 @@ public class Blog {
 		this.body = body;
 	}
 	
-	public Date getCreatedDate() {
+	public String getUsername() {
+		return username;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
-	public Date getModifiedDate() {
+	public String getModifiedDate() {
 		return modifiedDate;
 	}
-	public void setModifiedDate(Date modifiedDate) {
+	public void setModifiedDate(String modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 	public String getCategory() {

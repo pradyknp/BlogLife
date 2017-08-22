@@ -1,6 +1,5 @@
 package blog.api;
 
-import java.sql.Date;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
@@ -11,8 +10,8 @@ public class Comment {
 	
 	private String body;
 	private String username;
-	private Date createdDate;
-	private Date modifiedDate;
+	private String createdDate;
+	private String modifiedDate;
 	private int blogId;
 //	private List<String> replies;
 	
@@ -34,16 +33,16 @@ public class Comment {
 	public void setusername(String username) {
 		this.username = username;
 	}
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
-	public Date getModifiedDate() {
+	public String getModifiedDate() {
 		return modifiedDate;
 	}
-	public void setModifiedDate(Date modifiedDate) {
+	public void setModifiedDate(String modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 	public int getBlogId() {

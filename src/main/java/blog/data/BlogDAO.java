@@ -14,19 +14,19 @@ public class BlogDAO extends BasicDAO<Blog, Integer> {
 		super(entityClass, ds);
 	}
 
-	public List<Blog> searchByTitle(String title) {
+	public List<Blog> searchByTitle(String title,int startIndex,int lastIndex) {
 		Query<Blog> query = createQuery().field("title").containsIgnoreCase(title);
-		return query.asList();
+		return query.asList().subList(startIndex,lastIndex);
 	}
 	
-	public List<Blog> searchByCriteria(String category) {
+	public List<Blog> searchByCriteria(String category,int startIndex,int lastIndex) {
 		Query<Blog> query = createQuery().field("category").containsIgnoreCase(category);
-		return query.asList();
+		return query.asList().subList(startIndex,lastIndex);
 	}
 	
-	public List<Blog> searchByUser(String user) {
+	public List<Blog> searchByUser(String user,int startIndex,int lastIndex) {
 		Query<Blog> query = createQuery().field("username").containsIgnoreCase(user);
-		return query.asList();
+		return query.asList().subList(startIndex,lastIndex);
 	}
 	
 	public void deleteBlogUsingID(int id){

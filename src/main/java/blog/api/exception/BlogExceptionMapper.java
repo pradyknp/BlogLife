@@ -5,48 +5,28 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class BlogExceptionMapper implements ExceptionMapper<BlogException>{
+public class BlogExceptionMapper implements ExceptionMapper<BlogException> {
 
 	@Override
 	public Response toResponse(BlogException blogExp) {
-		 if (blogExp instanceof BlogNotFoundException){
-			 return Response.status(404).build();
-		 }
-		 else if (blogExp instanceof InvalidBlogException){
-			 return Response.status(405).build();
-		 }
-		 else if (blogExp instanceof DuplicateBlogException){
-			 return Response.status(406).build();
-		 }
-		 else if (blogExp instanceof CommentNotFoundException){
-			 return Response.status(404).build();
-		 }
-		 else if (blogExp instanceof InvalidCommentException){
-			 return Response.status(406).build();
-		 }
-		 else if (blogExp instanceof CommentException){
-			 return Response.status(500).build();
-		 }
-		 else if (blogExp instanceof UserAlreadyExistsException){
-			 return Response.status(400).build();
-		 }
-		 else if (blogExp instanceof UserNotFoundException){
-			 return Response.status(404).build();
-		 }
-		 else if (blogExp instanceof UserException){
-			 return Response.status(500).build();
-		 }
-		 else if (blogExp instanceof InvalidCommentException){
-			 return Response.status(405).build();
-		 }
-		 else if (blogExp instanceof CommentNotFoundException ){
-			 return Response.status(404).build();
-		 }
-		 else if (blogExp instanceof CommentException){
-			 return Response.status(500).build();
-		 }
-		 else
-			 return Response.status(500).build();
+		Response.Status httpStatus = Response.Status.INTERNAL_SERVER_ERROR;
+		if (blogExp instanceof BlogNotFoundException) {
+			httpStatus = Response.Status.NOT_FOUND;
+		} else if (blogExp instanceof InvalidBlogException) {
+			httpStatus = Response.Status.NOT_ACCEPTABLE;
+		} else if (blogExp instanceof DuplicateBlogException) {
+			httpStatus = Response.Status.CONFLICT;
+		} else if (blogExp instanceof CommentNotFoundException) {
+			httpStatus = Response.Status.NOT_FOUND;
+		} else if (blogExp instanceof InvalidCommentException) {
+			httpStatus = Response.Status.NOT_ACCEPTABLE;
+		} else if (blogExp instanceof UserAlreadyExistsException) {
+			httpStatus = Response.Status.CONFLICT;
+		} else if (blogExp instanceof UserNotFoundException) {
+			httpStatus = Response.Status.NOT_FOUND;
+		} else
+			httpStatus = Response.Status.NOT_ACCEPTABLE;
+
+		return Response.status(httpStatus).entity(blogExp.getMessage()).build();
 	}
 }
-

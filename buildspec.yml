@@ -1,0 +1,36 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Nothing to install, container image should have it all based on what we selected
+  pre_build:
+    commands:
+      - echo Just listing basic information about the environment
+      - which mvn
+      - mvn -version
+      - pwd
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn package
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Working on creating the tar ball with the WAR and AppSpec file for CodeDeploy
+      - mkdir appfiles
+      - cd appfiles
+      - cp ../target/HelloWorld-1.war .
+      - cp ../appspec.yml .
+      - ls -al
+      - tar -zcvf ../target/HelloWorld.tar.gz *.*
+artifacts:
+  files:
+# IMPORTANT
+# You have to use the tar.gz if you are manually executing CodeDeploy
+#    - target/HelloWorld.tar.gz
+# Use the individual files if you are using the CodeDeploy from CodePipeline
+# Reason is pipeline does not untar and errors out saying that the appspec file is not there
+    - appfiles/appspec.yml
+    - appfiles/HelloWorld-1.war
+  discard-paths: yes

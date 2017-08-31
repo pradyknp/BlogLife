@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.elites</groupId>
-  <artifactId>BlogLife</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>BlogLife Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.elites</groupId>
+	<artifactId>BlogLife</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>BlogLife Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -54,10 +54,20 @@
 			<artifactId>morphia</artifactId>
 			<version>1.3.0</version>
 		</dependency>
-  </dependencies>
-  <build>
-    <finalName>BlogLife</finalName>
-    		<plugins>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.thetransactioncompany</groupId>
+			<artifactId>cors-filter</artifactId>
+			<version>2.1</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>BlogLife</finalName>
+		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -69,5 +79,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-  </build>
+	</build>
 </project>

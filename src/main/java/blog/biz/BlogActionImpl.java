@@ -30,7 +30,7 @@ public class BlogActionImpl implements BlogAction {
 	// IBlogViewDAO dao = new InMemoryBlogDAO();
 	// IBlogViewDAO dao = new MongoDAOImpl();
 
-	MongoClient mongoClient = new MongoClient("localhost"); // 27017
+	MongoClient mongoClient = new MongoClient("172.31.45.12"); // 27017
 	Morphia morphia = new Morphia();
 	String databaseName = "blogview";
 	Datastore datastore = morphia.createDatastore(mongoClient, databaseName);

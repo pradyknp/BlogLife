@@ -77,6 +77,13 @@ public class BlogActionImpl implements BlogAction {
 	@Override
 	public List<Blog> viewAll(int pageno, int pagesize) throws BlogNotFoundException,InvalidBlogException,BlogException{
 
+		int total = (int) totalCount("getAll");
+		
+		if(total/pagesize < pageno ){
+			startIndex=(total/pagesize-1)*pagesize;
+			lastIndex= startIndex+(total%pagesize);
+		}
+		else
 		if (pageno != 0 && pagesize != 0) {
 			startIndex = (pageno - 1) * 5;
 			lastIndex = startIndex + pagesize;

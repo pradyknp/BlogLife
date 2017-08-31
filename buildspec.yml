@@ -20,17 +20,17 @@ phases:
       - echo Working on creating the tar ball with the WAR and AppSpec file for CodeDeploy
       - mkdir appfiles
       - cd appfiles
-      - cp ../target/HelloWorld-1.war .
+      - cp ../target/BlogLife.war .
       - cp ../appspec.yml .
       - ls -al
-      - tar -zcvf ../target/HelloWorld.tar.gz *.*
+      - tar -zcvf ../target/BlogLife.tar.gz *.*
 artifacts:
   files:
 # IMPORTANT
 # You have to use the tar.gz if you are manually executing CodeDeploy
-#    - target/HelloWorld.tar.gz
+    - target/BlogLife.tar.gz
 # Use the individual files if you are using the CodeDeploy from CodePipeline
 # Reason is pipeline does not untar and errors out saying that the appspec file is not there
-    - appfiles/appspec.yml
-    - appfiles/HelloWorld-1.war
+#    - appfiles/appspec.yml
+#    - appfiles/BlogLife.war
   discard-paths: yes

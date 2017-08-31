@@ -194,8 +194,8 @@ public class BlogActionImpl implements BlogAction {
 	}
 	
 	@Override
-	public void deleteBlog(int blogId) throws BlogNotFoundException,BlogException {
-		blogDAO.deleteBlogUsingID(blogId);
+	public String deleteBlog(int blogId) throws BlogNotFoundException,BlogException {
+		return blogDAO.deleteBlogUsingID(blogId);
 	}
 	
 	@Override
@@ -252,6 +252,15 @@ public class BlogActionImpl implements BlogAction {
 	@Override
 	public void deleteUser(String username) throws UserNotFoundException,UserException {
 		userDAO.deleteById(username);
+	}
+
+	@Override
+	public long totalCount(String category) throws BlogNotFoundException, BlogException {
+		
+		if(category.equals("getAll"))
+			return blogDAO.find().count();
+		else
+			return blogDAO.getCount(category);
 	}
 
 }

@@ -42,7 +42,7 @@ public interface BlogAction {
 	
 	Blog blogUnDisLike(int blogId) throws BlogNotFoundException,InvalidBlogException,BlogException;
 	
-	void deleteBlog(int blogId) throws BlogNotFoundException,BlogException;
+	String deleteBlog(int blogId) throws BlogNotFoundException,BlogException;
 	
 	void postComment(Comment comment) throws InvalidCommentException,CommentException;
 	
@@ -57,5 +57,7 @@ public interface BlogAction {
 	User getuserByUserName(String username) throws UserNotFoundException,UserException;
 	
 	void deleteUser(String username) throws UserNotFoundException,UserException;
+	
+	long totalCount(String category) throws BlogNotFoundException,BlogException;
 	
 }

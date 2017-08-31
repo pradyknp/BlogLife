@@ -29,11 +29,17 @@ public class BlogDAO extends BasicDAO<Blog, Integer> {
 		return query.asList().subList(startIndex,lastIndex);
 	}
 	
-	public void deleteBlogUsingID(int id){
+	public String deleteBlogUsingID(int id){
 		deleteById(id);
+		return "success";
 	}
 	
 	public Blog updateBlog(Blog blog){
 		return null;
+	}
+	
+	public long getCount (String category){
+		Query<Blog> query = createQuery().field("category").containsIgnoreCase(category);
+		return query.count();
 	}
 }

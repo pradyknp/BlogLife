@@ -2,6 +2,7 @@ package blog.rs;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,19 +15,26 @@ import blog.api.Blog;
 import blog.api.BlogAction;
 import blog.api.Comment;
 import blog.api.User;
-import blog.api.exception.BlogException;
-import blog.api.exception.BlogNotFoundException;
-import blog.api.exception.DuplicateBlogException;
-import blog.api.exception.InvalidBlogException;
-import blog.api.exception.InvalidUserException;
-import blog.api.exception.UserAlreadyExistsException;
-import blog.api.exception.UserException;
+
 import blog.biz.BlogActionImpl;
 import java.util.List;
+
 
 @Path("")
 public class BlogRootResource {
 	static BlogAction blogAction = new BlogActionImpl();
+	
+	@OPTIONS
+	@Path("{path : .*}")
+	public Response options() {
+	    return Response.ok("")
+	            .header("Access-Control-Allow-Origin", "*")
+	        /*    .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+	            .header("Access-Control-Allow-Credentials", "true")*/
+	            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+	            .header("Access-Control-Max-Age", "1209600")
+	            .build();
+	}
 
 	@GET
 	@Path("/blog/{blogId}")
@@ -42,6 +50,14 @@ public class BlogRootResource {
 	public Response findAll(@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
 		List<Blog> blog = blogAction.viewAll(pageno,pagesize);
 		return Response.ok().entity(blog).build();
+	}
+	
+	@GET
+	@Path("/blog/blogCount")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response blogCount(@QueryParam("category") String category) {
+		long blogCount = blogAction.totalCount(category);
+		return Response.ok().entity(blogCount).build();
 	}
 
 	@POST
@@ -81,10 +97,10 @@ public class BlogRootResource {
 	}
 
 	@GET
-	@Path("/blog/category/{category}")
+	@Path("/blog/category")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response findByCriteria(@PathParam("category") String category,@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
+	public Response findByCriteria(@QueryParam("search") String category,@QueryParam("pageno") int pageno,@QueryParam("pagesize") int pagesize) {
 			List<Blog> blog = blogAction.findByCategory(category,pageno,pagesize);
 			return Response.ok().entity(blog).build();
 	}
@@ -112,7 +128,7 @@ public class BlogRootResource {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response deleteBlog(@PathParam("blogId") int blogId) {
 		blogAction.deleteBlog(blogId);
-		return Response.ok().build();
+		return Response.ok().entity(blogId).build();
 	}
 	
 	@GET

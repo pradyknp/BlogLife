@@ -83,8 +83,7 @@ public class BlogActionImpl implements BlogAction {
 			startIndex=(total/pagesize-1)*pagesize;
 			lastIndex= startIndex+(total%pagesize);
 		}
-		else
-		if (pageno != 0 && pagesize != 0) {
+		else if (pageno != 0 && pagesize != 0) {
 			startIndex = (pageno - 1) * 5;
 			lastIndex = startIndex + pagesize;
 		}
@@ -100,7 +99,13 @@ public class BlogActionImpl implements BlogAction {
 	@Override
 	public List<Blog> findByCategory(String category,int pageno,int pagesize) throws BlogNotFoundException,InvalidBlogException,BlogException {
 		
-		if (pageno != 0 && pagesize != 0) {
+		int total = (int) totalCount(category);
+		
+		if(total/pagesize < pageno ){
+			startIndex=(total/pagesize-1)*pagesize;
+			lastIndex= startIndex+(total%pagesize);
+		}
+		else if (pageno != 0 && pagesize != 0) {
 			startIndex = (pageno - 1) * 5;
 			lastIndex = startIndex + pagesize;
 		}

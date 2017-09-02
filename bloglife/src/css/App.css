@@ -1,0 +1,446 @@
+html {
+  height: 100%;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+.Table-entire{
+  width:100%;
+  min-height: 680px;
+  border:0;
+
+}
+
+.Table-left {
+  display: block;
+  width: 22%;
+  height: 85%;
+  position: absolute;
+  left: 30px;
+}
+
+.Table-middle {
+  width:76%;
+  height:85%;
+}
+
+.displayAllBlog{
+  display:block;
+}
+
+.showBlog{
+  display:none;
+}
+
+.addBlog{
+  position: absolute;
+  display:block;
+  top: 15%;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+header {
+  position:relative;
+  display:block;
+  width :100%;
+  background: black;
+  color:white;
+  height:10%;
+}
+
+footer {
+  text-align: center;
+  background: black;
+  display:block;
+  height:20px;
+  color:white;
+}
+
+
+.header .logo {
+  position:absolute;
+  top:50%;left:15px;
+}
+
+nav,
+nav ul,
+nav ul li{
+  margin:0;
+  padding:0;
+}
+
+nav{
+  position:absolute;
+  top:50%;right:15px;
+}
+
+#login-list{
+  display:none;
+}
+li{
+  list-style-type:none;
+  display:inline-block;
+  margin-right:10px;
+}
+
+li a {
+  text-decoration: none;
+  cursor:pointer;
+  font-size:15px;
+  line-height: normal;
+  color:white;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+li a:hover {
+  text-decoration: none;
+  background-color: white;
+  color:black;
+}
+
+li a::selection{
+  text-decoration: none;
+  background-color: white;
+  color:black;
+}
+
+.category a {
+    padding:5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: normal;
+    color: #337ab7;
+    display: block;
+    text-align: center;
+}
+
+.category a:hover {
+    text-decoration: none;
+    background-color: white;
+    color:black;
+}
+.category a:active {
+    text-decoration: underline;
+    background-color: grey;
+    color:black;
+}
+
+#createPost{
+  display:inline-block;
+}
+
+
+
+
+/*input[type=text]:focus {
+width: 60%;
+}*/
+
+.allBlogs {
+  border: 1px solid;
+  background-color: white;
+  color: black;
+  margin: 5px 0 5px 0;
+  padding: 5px 10px 5px 10px;
+  width:70%;
+  display:inherit;
+    border-radius: 8px;
+    background-color: aliceblue;
+}
+
+.blogTitle{
+  display: flex;
+    width:99%;
+}
+
+
+.likeDislike{
+  text-align: right;
+}
+
+.input-group{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1rem;
+}
+
+.input-search{
+    width: 70% !important;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.input-group input {
+  width:180px;
+  font-size: 2 rem;
+  height: 42px;
+  border-radius: 3px 0 0 3px;
+}
+
+.isvishidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+
+.general-search .input-group input {
+  outline: 0;
+  border: 1px solid #D8D8D8;
+  border-right: none;
+  padding: 0 10px;
+  margin: 0;
+  height: 40px;
+}
+
+.btn-go {
+  background: #00BAFF;
+  border: none;
+  font-size: 1rem;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 0 1em;
+  margin-left:0px;
+}
+
+.btn-go, .btn-go:focus, .btn-go:hover {
+  color: #fff;
+}
+
+.titlefontstyle{
+  font-weight: bold;
+  font-size: 200%;
+}
+
+.datefontstyle{
+    font-style: italic;
+    font-size: 80%;
+}
+
+.bodyfontstyle{
+    font-size: 120%;
+    font-family: "Times New Roman";
+    float:left;
+    display:inline;
+}
+
+.showBlog {
+    display:block;
+    position: absolute;
+    left: 20%;
+   /* top: 15%;*/
+    width: 70%;
+    /* border: 3px solid #73AD21; */
+    padding: 10px;
+}
+
+
+
+
+
+
+
+/* Login Styling */
+
+/* Bordered form */
+form {
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password], input[type=email]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    margin-left: 40%;
+    border-radius: 8px;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    margin-left:43%;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+.paginationContainer{
+    display:flex;
+    float:right;
+    margin-right:33%;
+}
+
+.blogBodyContainer{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.deleteBlogBut {
+    background-color: #4CAF50;
+    /* color: white; */
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    padding:0px;
+    width: 20px ;
+    height:20px;
+    margin-left: 0px;
+    border-radius: 8px;
+}
+
+.RichEditor-root {
+    background: #fff;
+    border: 1px solid #ddd;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    padding: 15px;
+    margin-left: 15%;
+    width: 70%;
+}
+
+.RichEditor-editor {
+    border-top: 1px solid #ddd;
+    cursor: text;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.RichEditor-editor .public-DraftEditorPlaceholder-root,
+.RichEditor-editor .public-DraftEditor-content {
+    margin: 0 -15px -15px;
+    padding: 15px;
+}
+
+.RichEditor-editor .public-DraftEditor-content {
+    min-height: 200px;
+}
+
+.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
+    display: none;
+}
+
+.RichEditor-editor .RichEditor-blockquote {
+    border-left: 5px solid #eee;
+    color: #666;
+    font-family: 'Hoefler Text', 'Georgia', serif;
+    font-style: italic;
+    margin: 16px 0;
+    padding: 10px 20px;
+}
+
+.RichEditor-editor .public-DraftStyleDefault-pre {
+    background-color: rgba(0, 0, 0, 0.05);
+    font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.RichEditor-controls {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.RichEditor-styleButton {
+    color: #999;
+    cursor: pointer;
+    margin-right: 16px;
+    padding: 2px 0;
+    display: inline-block;
+}
+
+.RichEditor-activeButton {
+    color: #5890ff;
+}

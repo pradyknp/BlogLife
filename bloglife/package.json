@@ -1,0 +1,24 @@
+{
+  "name": "bloglife",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.16.2",
+    "babel-polyfill": "^6.26.0",
+    "draft-css": "0.0.1",
+    "draft-js": "^0.10.1",
+    "material-ui": "^0.19.0",
+    "react": "^15.6.1",
+    "react-autobind": "^1.0.6",
+    "react-dom": "^15.6.1",
+    "react-richtext": "^1.1.0",
+    "react-scripts": "1.0.11",
+    "react-tap-event-plugin": "^2.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

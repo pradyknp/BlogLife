@@ -3,6 +3,7 @@ package blog.data;
 import blog.api.Blog;
 import blog.api.Comment;
 import java.util.List;
+
 import blog.api.User;;
 
 public interface IBlogViewDAO {

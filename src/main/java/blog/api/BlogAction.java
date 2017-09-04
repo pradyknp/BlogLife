@@ -1,9 +1,5 @@
 package blog.api;
 
-
-import javax.persistence.Entity;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import blog.api.exception.BlogException;
 import blog.api.exception.BlogNotFoundException;
 import blog.api.exception.CommentException;
@@ -59,5 +55,4 @@ public interface BlogAction {
 	void deleteUser(String username) throws UserNotFoundException,UserException;
 	
 	long totalCount(String category) throws BlogNotFoundException,BlogException;
-	
 }

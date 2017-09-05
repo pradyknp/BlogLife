@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ShowBlog from "./ShowBlog";
+import ShowBlog from "./ViewBlogContent";
 import ReactDOM from 'react-dom';
-import Comments from './Comments'
+import Comments from './ViewComments'
 
 
 class Blogrender extends Component {

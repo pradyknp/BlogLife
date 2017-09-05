@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Tableleft from './Tableleft'
-import Tableright from './Tableright'
+import Tableright from './ViewContent'
 
 class launchBlog extends Component {
     constructor(props){

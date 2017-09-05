@@ -26,11 +26,15 @@ bloglaunch(){
     render() {
         var title = `${this.props.componentData.title}`;
         title=title.split(" ").join("_");
-        return (
+
+        var titleTodispay = `${this.props.componentData.title}`;
+        titleTodispay = (titleTodispay.length > 60) ?  titleTodispay.substring(0,60)+"..." : titleTodispay;
+
+         return (
             <div>
 
                 <div className="allBlogs" ref="allBlogs">
-                    <div className="blogTitle"><h2 style={{'width':'100%'}}><Link to={`/Blog/`+title}>{this.props.componentData.title}</Link></h2>
+                    <div className="blogTitle"><h3 style={{'width':'100%'}}><Link to={`/Blog/`+title}>{titleTodispay}</Link></h3>
                         <button id="deleteBlog" className="deleteBlogBut" name="deleteBlog" onClick={this.props.deleteBlogProp}>x</button></div>
                     <h6> Created By <b>{this.props.componentData.username}</b> on {this.props.componentData.createdDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments {this.props.componentData.comments}</a></h6>
                     <br/>

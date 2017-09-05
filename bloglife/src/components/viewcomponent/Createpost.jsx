@@ -10,9 +10,11 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Editor, EditorState, RichUtils} from 'draft-js';
 import {stateToHTML} from 'draft-js-export-html';
-import Select from 'react-select';
+import { Route, Redirect } from 'react-router'
 
-import jquery from "min-jquery";
+/*
+import Select from 'react-select';
+import jquery from "min-jquery";*/
 /*import axios from 'axios';
 import FormData from 'react-form-data';
 import request from 'superagent';*/
@@ -96,7 +98,6 @@ class Createpost extends Component {
 
     componentDidUpdate(){
         var categorySelection = document.getElementById("category");
-        console.log("inside didupate" +categorySelection);
 
         this.state.options.map ((category,id) =>
         {
@@ -145,6 +146,18 @@ class Createpost extends Component {
             return response.json();
         }).then(function(data) {
             console.log("success");
+            {/*<Route exact path="/" render={() => (
+                loggedIn ? (
+                    <Redirect to="/dashboard"/>
+                ) : (
+                    <PublicHomePage/>
+                )
+            )}/>*/}
+
+            window.location = "/";
+
+        }).catch(function(err) {
+            console.log(err);
         });
     }
 

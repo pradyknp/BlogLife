@@ -6,7 +6,7 @@ import {
   Link
 } from 'react-router-dom'
 
-import Tableright from './Tableright'
+import Tableright from './ViewContent'
 
 class HomepagewithSideBar extends React.Component {
 // Each logical "route" has two components, one for

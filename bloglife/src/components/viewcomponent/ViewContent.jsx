@@ -1,5 +1,8 @@
+// npm install -save react-loading
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import ReactLoading from 'react-loading';
 
 import {
     BrowserRouter as Router,
@@ -7,8 +10,8 @@ import {
     Link
 } from 'react-router-dom';
 
-import BlogIt from "./BlogIt";
-import Blogrender from "./Blogrender"
+import BlogIt from "./BlogGroups";
+import Blogrender from "./BlogComponent"
 
 
 //npm install react-js-pagination
@@ -279,85 +282,86 @@ class Tableright extends Component {
 
     render() {
         if(this.state.isLoading){
-            return (
-                <div>
-                    <b>Loading...</b>
-                </div>
-            )
-        }
-        else if(this.state.isLoadingAll){
-            console.log("inside showBlog of table right getALL");
-            console.log(this.state.isLoadingAll);
-            console.log(this.state.category);
-            if(this.state.blogcount == 0){
-                 return (
-                                <div>
-                                    <b>There are no Blog posts to be displayed</b>
-                                </div>
-                        )
-            }
-            else {
-            return (
-                <div>
-                    <Router>
-                     <div>
-                     <div id="displayBlogPagination">
-                    <div id="displayAllBlog" className="getAllBlog">
-                        {this.state.dataSource.map((dynamicComponent, i) => <BlogIt deleteBlogProp={this.deleteBlog.bind(this,dynamicComponent)} launchBlogProp ={this.launchBlog.bind(this,dynamicComponent)}
-                                                                                    key = {i} componentData = {dynamicComponent} />)}
-                    </div>
-                    <br/>
-                    <br/>
-                    <div className="paginationContainer">
-                        <button type="submit"  id="pageDec" style={{'width':'45px'}} onClick={this.paginationDec}> &laquo;</button>
-                        <button type="submit"  id="pageInc" style={{'marginLeft':'2px','width':'45px'}} onClick={this.paginationInc}>&raquo;</button>
-                    </div>
-                         </div>
-                     <div id="individualBlogData">
-                        {this.state.blogRoute.map((route, index) => (
-                            // Render more <Route>s with the same paths as
-                            // above, but different components this time.
-                            <Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                component={route.main}
-                            />
-                        ))}
-                      </div>
-                     </div>
-                    </Router>
-                </div>
-
-
-            );
-            }
-        }
-        else{
-            console.log("inside showBlog of table right individual blog data");
-            console.log(this.state.isLoadingAll);
-            console.log(this.state.blogData);
-             console.log(this.state.category);
-            return (
-                <Router>
+        // if(true){
+                return (
                     <div>
-                        {this.state.blogRoute.map((route, index) => (
-                            // Render more <Route>s with the same paths as
-                            // above, but different components this time.
-                            <Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                component={route.main}
-                            />
-                        ))}
-
-                    </div>
-                </Router>
-
-            );
+                    <ReactLoading  style ={{'height':'64','width':'70'}} /></div>
+                )
         }
-    }
+            else if(this.state.isLoadingAll){
+                console.log("inside showBlog of table right getALL");
+                console.log(this.state.isLoadingAll);
+                console.log(this.state.category);
+                if(this.state.blogcount == 0){
+                    return (
+                        <div>
+                            <b>There are no Blog posts to be displayed</b>
+                        </div>
+                    )
+                }
+                else {
+                    return (
+                        <div>
+                            <Router>
+                                <div>
+                                    <div id="displayBlogPagination">
+                                        <div id="displayAllBlog" className="getAllBlog">
+                                            {this.state.dataSource.map((dynamicComponent, i) => <BlogIt deleteBlogProp={this.deleteBlog.bind(this,dynamicComponent)} launchBlogProp ={this.launchBlog.bind(this,dynamicComponent)}
+                                                                                                        key = {i} componentData = {dynamicComponent} />)}
+                                        </div>
+                                        <br/>
+                                        <br/>
+                                        <div className="paginationContainer">
+                                            <button type="submit"  id="pageDec" style={{'width':'45px'}} onClick={this.paginationDec}> &laquo;</button>
+                                            <button type="submit"  id="pageInc" style={{'marginLeft':'2px','width':'45px'}} onClick={this.paginationInc}>&raquo;</button>
+                                        </div>
+                                    </div>
+                                    <div id="individualBlogData">
+                                        {this.state.blogRoute.map((route, index) => (
+                                            // Render more <Route>s with the same paths as
+                                            // above, but different components this time.
+                                            <Route
+                                                key={index}
+                                                path={route.path}
+                                                exact={route.exact}
+                                                component={route.main}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            </Router>
+                        </div>
+
+
+                    );
+                }
+            }
+            else{
+                console.log("inside showBlog of table right individual blog data");
+                console.log(this.state.isLoadingAll);
+                console.log(this.state.blogData);
+                console.log(this.state.category);
+                return (
+                    <Router>
+                        <div>
+                            {this.state.blogRoute.map((route, index) => (
+                                // Render more <Route>s with the same paths as
+                                // above, but different components this time.
+                                <Route
+                                    key={index}
+                                    path={route.path}
+                                    exact={route.exact}
+                                    component={route.main}
+                                />
+                            ))}
+
+                        </div>
+                    </Router>
+
+                );
+            }
+        }
+
 }
 
 export default Tableright;

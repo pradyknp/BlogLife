@@ -79,9 +79,9 @@ public class BlogActionImpl implements BlogAction {
 
 		int total = (int) totalCount("getAll");
 		
-		if(pageno ==0 && pagesize ==0){
+		if(pageno ==0 || pagesize ==0){
 			pageno=1;
-			pageno=5;
+			pagesize=5;
 		}
 			
 		

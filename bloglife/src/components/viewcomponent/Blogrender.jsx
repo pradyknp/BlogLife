@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ShowBlog from "./ShowBlog";
 import ReactDOM from 'react-dom';
+import Comments from './Comments'
 
 
 class Blogrender extends Component {
@@ -23,7 +24,7 @@ class Blogrender extends Component {
                 <ShowBlog  blogDataProp={this.props.blogData}></ShowBlog>
                 <hr/>
                 <div>
-                    Comment Section coming soon
+                    <Comments blogIDProps={this.props.blogData.id}/>
                 </div>
             </div>
         );

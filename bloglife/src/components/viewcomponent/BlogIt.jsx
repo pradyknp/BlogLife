@@ -12,7 +12,13 @@ class BlogIt extends Component {
         this.bloglaunch=this.bloglaunch.bind(this);
     }
 
-    bloglaunch(){
+    rawMarkup()
+    {
+        var rawMarkup = this.props.componentData.body.substring(0,100);
+        return {__html: rawMarkup};
+    }
+
+bloglaunch(){
         console.log("inside bloglaunch");
      /*return (<Router><Route path="/launchBlog" render={routeProps => <launchBlog {...routeProps} blogGetter={this.props.componentData} />}/></Router>);*/
     }
@@ -26,9 +32,9 @@ class BlogIt extends Component {
                 <div className="allBlogs" ref="allBlogs">
                     <div className="blogTitle"><h2 style={{'width':'100%'}}><Link to={`/Blog/`+title}>{this.props.componentData.title}</Link></h2>
                         <button id="deleteBlog" className="deleteBlogBut" name="deleteBlog" onClick={this.props.deleteBlogProp}>x</button></div>
-                    <h6> Created By <b>{this.props.componentData.username}</b> on April 25 2017 10:30 pm &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments {this.props.componentData.comments}</a></h6>
+                    <h6> Created By <b>{this.props.componentData.username}</b> on {this.props.componentData.createdDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments {this.props.componentData.comments}</a></h6>
                     <br/>
-                    <div> {this.props.componentData.body.substring(0,100)}.....</div>
+                    <div> <span dangerouslySetInnerHTML={this.rawMarkup()}/></div>
                     <div className="likeDislike">Like&nbsp;{this.props.componentData.likes} &nbsp; &nbsp; &nbsp; Dislike&nbsp;{this.props.componentData.dislikes}</div>
                 </div>
             </div>

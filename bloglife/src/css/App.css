@@ -444,3 +444,21 @@ span.psw {
 .RichEditor-activeButton {
     color: #5890ff;
 }
+
+.allComments {
+    border-bottom: solid 1px;
+}
+
+.deleteCommentBut {
+    background-color: #4CAF50;
+    color: white;
+    /* padding: 14px 20px; */
+    /* margin: 8px 0; */
+    /* border: none; */
+    /* cursor: pointer; */
+    /* width: 15%; */
+    float: right;
+    width: auto !important;
+    border-radius: 8px;
+    padding: 1px 4px;
+}

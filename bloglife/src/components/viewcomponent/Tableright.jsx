@@ -24,7 +24,6 @@ class Tableright extends Component {
             category:"getAll",
             totalBlogCount:0,
             blogcount:0,
-            fromlaunchBlog:false,
             pageSize:5,
             pageNo:1,
             blogRoute:[],
@@ -83,8 +82,8 @@ class Tableright extends Component {
             }];
 
         this.setState({
+            isLoading:false,
             isLoadingAll:false,
-            fromlaunchBlog:true,
             blogData:{
                 title:childdata.title,
                 body:childdata.body,
@@ -253,6 +252,11 @@ class Tableright extends Component {
                         this.getBlogByCategory(totalCount, pageNo,pageSize, this.props.categoryProps);
                     }
                 }
+                else{
+                    this.setState({
+                        isLoading:false,
+                    })
+                }
             })
             .catch((error) => {
                 console.error(error);
@@ -274,7 +278,14 @@ class Tableright extends Component {
 
 
     render() {
-        if(this.state.isLoadingAll){
+        if(this.state.isLoading){
+            return (
+                <div>
+                    <b>Loading...</b>
+                </div>
+            )
+        }
+        else if(this.state.isLoadingAll){
             console.log("inside showBlog of table right getALL");
             console.log(this.state.isLoadingAll);
             console.log(this.state.category);

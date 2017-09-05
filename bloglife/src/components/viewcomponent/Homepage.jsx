@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Tableleft from './Tableleft'
-import Tableright from './Tableright'
-
+import Tableright from './Tableright';
+import Tableleft from './Tableleft';
 class Homepage extends Component {
     constructor(props){
         super(props)

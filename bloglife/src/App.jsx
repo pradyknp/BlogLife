@@ -12,7 +12,6 @@ import {
 } from 'react-router-dom';
 
 import Header from './components/headercomponent/Header.jsx';
-import HomePage from './components/viewcomponent/Homepage.jsx';
 import Footer from './components/footercomponent/Footer.jsx';
 import Createpost from './components/viewcomponent/Createpost.jsx';
 import Login from './components/usercomponent/Login.jsx';

@@ -17,24 +17,42 @@ class ShowBlog extends Component {
         /!*return (<Router><Route path="/launchBlog" render={routeProps => <launchBlog {...routeProps} blogGetter={this.props.componentData} />}/></Router>);*!/
     }*/
 
-    render() {
+    rawMarkup()
+    {
+        var rawMarkup = this.props.blogDataProp.body;
+        return {__html: rawMarkup};
+    }
+   /* render(){
+        return(
+            <div className="modal-body">
+                <span dangerouslySetInnerHTML={this.rawMarkup()} />
+
+            </div>
+        )
+    }
+``}*/
+
+
+
+render() {
 
         return (
             <div>
                 <table>
                     <tbody>
                     <tr>
-                        <td><div className="titlefontstyle" id="titleread" disabled>{this.props.blogDataProp.title}</div>
+                        <td><h1 className="titlefontstyle" id="titleread" disabled>{this.props.blogDataProp.title}</h1>
                         </td>
                     </tr>
                     <tr>
-                        <td><div className="datefontstyle" id="createread" disabled>{this.props.blogDataProp.username}</div>
+                        <td><div className="datefontstyle" id="createread" disabled>created By <b>{this.props.blogDataProp.username}</b> on {this.props.blogDataProp.createdDate}</div>
                         </td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
                     <tr>
-                                <td><div className="bodyfontstyle" id="bodyread" disabled>{this.props.blogDataProp.body}</div>
+                        <td><div className="bodyfontstyle" id="bodyread" disabled><span dangerouslySetInnerHTML={this.rawMarkup()} /></div>
                                 </td>
                             </tr>
                     </tbody>

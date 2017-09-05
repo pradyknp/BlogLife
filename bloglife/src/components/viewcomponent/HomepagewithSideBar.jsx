@@ -6,7 +6,6 @@ import {
   Link
 } from 'react-router-dom'
 
-import Tableleft from './Tableleft'
 import Tableright from './Tableright'
 
 class HomepagewithSideBar extends React.Component {

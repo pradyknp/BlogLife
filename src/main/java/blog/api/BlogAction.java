@@ -11,6 +11,7 @@ import blog.api.exception.InvalidUserException;
 import blog.api.exception.UserAlreadyExistsException;
 import blog.api.exception.UserException;
 import blog.api.exception.UserNotFoundException;
+import blog.data.TokenDao;
 
 import java.util.List;
 import blog.api.User;
@@ -55,4 +56,10 @@ public interface BlogAction {
 	void deleteUser(String username) throws UserNotFoundException,UserException;
 	
 	long totalCount(String category) throws BlogNotFoundException,BlogException;
+
+	TokenDao getTokenDAO();
+
+	String issueAndStoreToken(String userName);
+
+	boolean authenticateUser(User user) throws UserNotFoundException, UserException;
 }

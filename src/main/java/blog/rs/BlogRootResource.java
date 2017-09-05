@@ -3,56 +3,38 @@ package blog.rs;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
-
 import blog.api.Blog;
 import blog.api.BlogAction;
 import blog.api.Comment;
 import blog.api.User;
-import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
-import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
 import blog.biz.BlogActionImpl;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import jwt.utils.JWTTokenNeeded;
-import jwt.utils.KeyGenerator;
-import jwt.utils.SimpleKeyGenerator;
-
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Path("")
 public class BlogRootResource {
-	private KeyGenerator keyGenerator = new SimpleKeyGenerator();
-	
-	@Context
-	private UriInfo uriInfo;
-
 	static BlogAction blogAction = new BlogActionImpl();
 
-	@OPTIONS
-	@Path("{path : .*}")
-	public Response options() {
-		return Response.ok("").header("Access-Control-Allow-Origin", "*")
-				/*
-				 * .header("Access-Control-Allow-Headers",
-				 * "origin, content-type, accept, authorization")
-				 * .header("Access-Control-Allow-Credentials", "true")
-				 */
-				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-				.header("Access-Control-Max-Age", "1209600").build();
-	}
+//	@OPTIONS
+//	@Path("{path : .*}")
+//	public Response options() {
+//		return Response.ok("").header("Access-Control-Allow-Origin", "*")
+//				/*
+//				 * .header("Access-Control-Allow-Headers",
+//				 * "origin, content-type, accept, authorization")
+//				 * .header("Access-Control-Allow-Credentials", "true")
+//				 */
+//				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+//				.header("Access-Control-Max-Age", "1209600").build();
+//	}
 
 	@GET
 	@Path("/blog/{blogId}")
@@ -220,28 +202,34 @@ public class BlogRootResource {
 	}
 
 	@POST
-	@Path("/user/login")
-	@Consumes({ MediaType.APPLICATION_JSON })
-	public Response authenticateUser(User inputUser) {
-		try {
-			User user = blogAction.getuserByUserName(inputUser.getUsername());
-
-			if (!user.getPwd().equals(inputUser.getPwd())) {
-				return Response.status(UNAUTHORIZED).build();
-			}
-			// Issue a token for the user
-			String jwtToken = Jwts.builder().setSubject(user.getUsername()).setIssuer(uriInfo.getAbsolutePath().toString())
-					.setIssuedAt(new Date())
-					.setExpiration(
-							Date.from(LocalDateTime.now().plusMinutes(15L).atZone(ZoneId.systemDefault()).toInstant()))
-					.signWith(SignatureAlgorithm.HS512, keyGenerator.generateKey()).compact();
-
-			// Return the token on the response
-			return Response.ok().header(AUTHORIZATION, "Bearer " + jwtToken).build();
-
-		} catch (Exception e) {
-			return Response.status(UNAUTHORIZED).build();
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response loginUser(User user) throws IllegalArgumentException, UnsupportedEncodingException {
+		if (blogAction.authenticateUser(user)) {
+			String token = blogAction.issueAndStoreToken(user.getUsername());
+			return Response.ok().entity(token).build();
+		} else {
+			return Response.status(401).entity("Authentication Failed.").build();
 		}
+	}
+
+	@GET
+	@Path("/user/verifyToken")
+	public Response verifyJWTToken(@QueryParam("token") String token)
+			throws IllegalArgumentException, UnsupportedEncodingException {
+		if (jwt.utils.AuthUtil.verifyToken(token)) {
+			return Response.ok().build();
+		}
+		return Response.status(401).entity("Verification failed.").build();
+	}
+
+	@POST
+	@Path("/user/logout")
+	@JWTTokenNeeded
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response logoutUser(User user) {
+		blogAction.getTokenDAO().delete(blogAction.getTokenDAO().get(user.getUsername()));
+		return Response.ok().build();
 	}
 
 	@DELETE

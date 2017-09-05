@@ -79,6 +79,12 @@ public class BlogActionImpl implements BlogAction {
 
 		int total = (int) totalCount("getAll");
 		
+		if(pageno ==0 && pagesize ==0){
+			pageno=1;
+			pageno=5;
+		}
+			
+		
 		if(total/pagesize < pageno ){
 			startIndex=(total/pagesize-1)*pagesize;
 			lastIndex= startIndex+(total%pagesize);

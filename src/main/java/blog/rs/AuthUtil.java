@@ -1,4 +1,4 @@
-package jwt.utils;
+package blog.rs;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Calendar;

@@ -15,7 +15,7 @@ import blog.api.BlogAction;
 import blog.api.Comment;
 import blog.api.User;
 import blog.biz.BlogActionImpl;
-import jwt.utils.JWTTokenNeeded;
+
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -217,7 +217,7 @@ public class BlogRootResource {
 	@Path("/user/verifyToken")
 	public Response verifyJWTToken(@QueryParam("token") String token)
 			throws IllegalArgumentException, UnsupportedEncodingException {
-		if (jwt.utils.AuthUtil.verifyToken(token)) {
+		if (blog.rs.AuthUtil.verifyToken(token)) {
 			return Response.ok().build();
 		}
 		return Response.status(401).entity("Verification failed.").build();

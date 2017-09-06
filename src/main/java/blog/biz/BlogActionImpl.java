@@ -303,7 +303,7 @@ public class BlogActionImpl implements BlogAction {
 
 	@Override
 	public String issueAndStoreToken(String userName) {
-		String token = jwt.utils.AuthUtil.issueToken(userName);
+		String token = blog.rs.AuthUtil.issueToken(userName);
 		AuthToken jwtToken = tokenDAO.get(userName);
 		if (jwtToken == null) {
 			jwtToken = new AuthToken();

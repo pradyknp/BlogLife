@@ -204,10 +204,11 @@ public class BlogRootResource {
 	@POST
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces({ MediaType.APPLICATION_JSON })
 	public Response loginUser(User user) throws IllegalArgumentException, UnsupportedEncodingException {
 		if (blogAction.authenticateUser(user)) {
-			String token = blogAction.issueAndStoreToken(user.getUsername());
-			return Response.ok().entity(token).build();
+			String result = "{\"token\":\"Bearer " + blogAction.issueAndStoreToken(user.getUsername()) + "\"}";
+			return Response.ok().entity(result).build();
 		} else {
 			return Response.status(401).entity("Authentication Failed.").build();
 		}
@@ -217,7 +218,7 @@ public class BlogRootResource {
 	@Path("/user/verifyToken")
 	public Response verifyJWTToken(@QueryParam("token") String token)
 			throws IllegalArgumentException, UnsupportedEncodingException {
-		if (blog.rs.AuthUtil.verifyToken(token)) {
+		if (blog.biz.AuthUtil.verifyToken(token)) {
 			return Response.ok().build();
 		}
 		return Response.status(401).entity("Verification failed.").build();

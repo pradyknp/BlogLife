@@ -1,4 +1,4 @@
-package blog.rs;
+package blog.biz;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
@@ -13,7 +13,6 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 import blog.api.BlogAction;
 import blog.api.AuthToken;
-import blog.biz.BlogActionImpl;
 
 public class AuthUtil {
 

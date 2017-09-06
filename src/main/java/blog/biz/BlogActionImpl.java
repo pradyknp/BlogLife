@@ -83,11 +83,18 @@ public class BlogActionImpl implements BlogAction {
 			throws BlogNotFoundException, InvalidBlogException, BlogException {
 
 		int total = (int) totalCount("getAll");
-
-		if (total / pagesize < pageno) {
-			startIndex = (total / pagesize - 1) * pagesize;
-			lastIndex = startIndex + (total % pagesize);
-		} else if (pageno != 0 && pagesize != 0) {
+		
+		if(pageno ==0 || pagesize ==0){
+			pageno=1;
+			pagesize=5;
+		}
+			
+		
+		if(total/pagesize < pageno ){
+			startIndex=(total/pagesize-1)*pagesize;
+			lastIndex= startIndex+(total%pagesize);
+		}
+		else if (pageno != 0 && pagesize != 0) {
 			startIndex = (pageno - 1) * 5;
 			lastIndex = startIndex + pagesize;
 		}

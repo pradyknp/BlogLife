@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Tableright from './Tableright';
+import Tableright from './ViewContent';
 import Tableleft from './Tableleft';
 class Homepage extends Component {
     constructor(props){

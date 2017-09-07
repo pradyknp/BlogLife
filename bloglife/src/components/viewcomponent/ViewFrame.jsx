@@ -6,9 +6,9 @@ import {
   Link
 } from 'react-router-dom'
 
-import Tableright from './ViewContent'
+import ViewContent from './ViewContent'
 
-class HomepagewithSideBar extends React.Component {
+class ViewFrame extends React.Component {
 // Each logical "route" has two components, one for
 // the sidebar and one for the main area. We want to
 // render both of them in different places when the
@@ -20,44 +20,48 @@ constructor(props){
         routes:[
           { path: '/',
             exact: true,
-            sidebar: () => <div>View All!</div>,
-            main: () => <Tableright categoryProps="getAll"/>
+            sidebar: () => <div><b>Filtered By View All</b></div>,
+            main: () => <ViewContent categoryProps="getAll"/>
           },
           { path: '/category/Entertainment',
-            sidebar: () => <div>bubblegum!</div>,
-            main: () => <Tableright categoryProps="entertainment"/>
+            sidebar: () => <div><b>Filtered By Entertainment</b></div>,
+            main: () => <ViewContent categoryProps="entertainment"/>
           },
            { path: '/category/politics',
-            sidebar: () => <div>bubblegum!</div>,
-             main: () => <Tableright categoryProps="politics"/>
+            sidebar: () => <div><b>Filtered By Politics</b></div>,
+             main: () => <ViewContent categoryProps="politics"/>
          },
           { path: '/category/travel',
-            sidebar: () => <div>shoelaces!</div>,
-            main: () => <Tableright categoryProps="travel"/>
+            sidebar: () => <div><b>Filtered By Travel</b></div>,
+            main: () => <ViewContent categoryProps="travel"/>
           },
           { path: '/category/history',
-           sidebar: () => <div>bubblegum!</div>,
-           main: () => <Tableright categoryProps="history"/>
+           sidebar: () => <div><b>Filtered By History</b></div>,
+           main: () => <ViewContent categoryProps="history"/>
           },
           { path: '/category/finance',
-           sidebar: () => <div>bubblegum!</div>,
-           main: () => <Tableright categoryProps="finance"/>
+           sidebar: () => <div><b>Filtered By Finance</b></div>,
+           main: () => <ViewContent categoryProps="finance"/>
           },
           { path: '/category/healthcare',
-            sidebar: () => <div>bubblegum!</div>,
-            main: () => <Tableright categoryProps="healthcare"/>
+            sidebar: () => <div><b>Filtered By HealthCare</b></div>,
+            main: () => <ViewContent categoryProps="healthcare"/>
            },
           { path: '/category/humanresources',
-           sidebar: () => <div>bubblegum!</div>,
-           main: () => <Tableright categoryProps="humanresources"/>
+           sidebar: () => <div><b>Filter By Human Resources</b></div>,
+           main: () => <ViewContent categoryProps="humanresources"/>
             },
            { path: '/category/business',
-             sidebar: () => <div>bubblegum!</div>,
-             main: () => <Tableright categoryProps="business"/>
+             sidebar: () => <div><b>Filter By Business</b></div>,
+             main: () => <ViewContent categoryProps="business"/>
            },
             { path: '/category/general',
-                 sidebar: () => <div>bubblegum!</div>,
-              main: () => <Tableright categoryProps="general"/>
+                 sidebar: () => <div><b>Filter By General</b></div>,
+              main: () => <ViewContent categoryProps="general"/>
+            },
+            { path: '/myblogs',
+                sidebar: () => <div><b>Filtered By MyBlogs</b></div>,
+                main: () => <ViewContent categoryProps="getByUser" />
             },
 
         ]
@@ -77,7 +81,22 @@ return(
         background: 'white'
       }}>
 
-         <b>Filter By Category</b><br/>
+          {this.state.routes.map((route, index) => (
+              // You can render a <Route> in as many places
+              // as you want in your app. It will render along
+              // with any other <Route>s that also match the URL.
+              // So, a sidebar or breadcrumbs or anything else
+              // that requires you to render multiple things
+              // in multiple places at the same URL is nothing
+              // more than multiple <Route>s.
+              <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  component={route.sidebar}
+              />
+          ))}
+
         <ul style={{ listStyleType: 'none', padding: '0px 0px 0px 10px' }}>
 
           <li className="category"><Link to="/">View All</Link></li><br/>
@@ -96,30 +115,15 @@ return(
 
          <br/>
               <br/>
-               <div className="input-group">
+    {/*      <div className="input-group">
                <label htmlFor="general-search-search-input" className="isvishidden">Search the site</label>
 
                <input type="text" className="input-search" name="q" ref="general-search-search-input" placeholder="Search By Title"></input>
 
                <button className="btn btn-go">GO</button>
 
-        </div>
+        </div>*/}
 
-        {this.state.routes.map((route, index) => (
-          // You can render a <Route> in as many places
-          // as you want in your app. It will render along
-          // with any other <Route>s that also match the URL.
-          // So, a sidebar or breadcrumbs or anything else
-          // that requires you to render multiple things
-          // in multiple places at the same URL is nothing
-          // more than multiple <Route>s.
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={route.sidebar}
-          />
-        ))}
       </div>
 
       <div style={{ flex: 1, padding: '10px', 'minHeight':'700px','maxHeight':'900px' }}>
@@ -142,4 +146,4 @@ return(
 }
 
 }
-export default HomepagewithSideBar
+export default ViewFrame

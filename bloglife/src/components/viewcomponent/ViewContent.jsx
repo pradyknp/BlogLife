@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ReactLoading from 'react-loading';
+import Auth from '../../Authentication/Auth';
 
 import {
     BrowserRouter as Router,
@@ -10,13 +11,13 @@ import {
     Link
 } from 'react-router-dom';
 
-import BlogIt from "./BlogGroups";
-import Blogrender from "./BlogComponent"
+import BlogGroups from "./BlogGroups";
+import BlogComponent from "./BlogComponent"
 
 
 //npm install react-js-pagination
 
-class Tableright extends Component {
+class ViewContent extends Component {
 
     constructor(props) {
         super(props);
@@ -81,7 +82,7 @@ class Tableright extends Component {
             {
                 path: '/Blog/'+childdata.title.split(" ").join("_"),
                 exact: true,
-                main: () => <Blogrender blogData={this.state.blogData}/>
+                main: () => <BlogComponent blogData={this.state.blogData}/>
             }];
 
         this.setState({
@@ -97,10 +98,25 @@ class Tableright extends Component {
     }
 
     deleteBlog(childdata,event){
-      var url = 'http://localhost:7777/BlogLife/Blogit/blog/delete/'+childdata.id;
 
-        return fetch(url)
-            .then((response) => response.json())
+        var token = "";
+        if (Auth.isUserAuthenticated()) {
+            token = Auth.getToken();
+        }
+        else{
+            alert("You need to login to delete the blogs");
+            return;
+        }
+
+      var url = 'http://localhost:7777/BlogLife/Blogit/blog/'+childdata.id;
+
+        return fetch(url,{
+            method:"DELETE",
+            headers: {
+                'Access-Control-Request-Headers': '*',
+                'Authorization': token,
+            }
+        }).then((response) => response.json())
             .then((responseJson) => {
                 console.log("Inside DeleteBlog");
                 var pageNo = this.state.pageNo;
@@ -161,7 +177,7 @@ class Tableright extends Component {
                     routes[index]={
                        path:`/Blog/${route.title}`.split(" ").join("_"),
                        exact:true,
-                       main: () => <Blogrender blogData={route}/>
+                       main: () => <BlogComponent blogData={route}/>
                     }
                 ));
 
@@ -169,7 +185,7 @@ class Tableright extends Component {
                     {
                         path: '/Blog/'+childdata.title.split(" ").join("_"),
                         exact: true,
-                        main: () => <Blogrender blogData={this.state.blogData}/>
+                        main: () => <BlogComponent blogData={this.state.blogData}/>
                     }];*/
 
                 this.setState({
@@ -210,7 +226,7 @@ class Tableright extends Component {
                     routes[index]={
                         path:`/Blog/${route.title}`.split(" ").join("_"),
                         exact:true,
-                        main: () => <Blogrender blogData={route}/>
+                        main: () => <BlogComponent blogData={route}/>
                     }
                 ));
 
@@ -234,36 +250,106 @@ class Tableright extends Component {
             });
     }
 
-    componentWillMount() {
-        var totalCount=0;
+    getBlogsByUser(totalCount,pageno,pagesize,username){
+        var url = `http://localhost:7777/BlogLife/Blogit/blog/user/`+username+`?pageno=`+pageno+`&pagesize=`+pagesize;
 
-        var url =`http://localhost:7777/BlogLife/Blogit/blog/blogCount?category=${this.props.categoryProps}`;
-        fetch(url)
+        console.log(url);
+
+        return fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log("Inside blogCount");
-                totalCount = responseJson;
-                console.log(totalCount);
-                var pageNo=1;
-                var pageSize = (totalCount - (this.state.pageSize * (pageNo - 1))) >= this.state.pageSize ? this.state.pageSize : totalCount%this.state.pageSize;
-                if(totalCount > 0) {
-                    if (this.props.categoryProps == "getAll") {
-                        this.getAllBlog(totalCount, pageNo,pageSize, this.props.categoryProps);
+                console.log("Inside responseJSON");
+                console.log(responseJson[0])
+
+                var routes =[];
+                responseJson.map((route, index) => (
+                    // Render more <Route>s with the same paths as
+                    // above, but different components this time.
+                    routes[index]={
+                        path:`/Blog/${route.title}`.split(" ").join("_"),
+                        exact:true,
+                        main: () => <BlogComponent blogData={route}/>
                     }
-                    else {
-                        console.log(pageSize)
-                        this.getBlogByCategory(totalCount, pageNo,pageSize, this.props.categoryProps);
-                    }
-                }
-                else{
-                    this.setState({
-                        isLoading:false,
-                    })
-                }
+                ));
+
+
+                this.setState({
+                    isLoading: false,
+                    isLoadingAll:true,
+                    category:this.props.categoryProps,
+                    dataSource: responseJson,
+                    blogcount:totalCount,
+                    pageNo:pageno,
+                    blogRoute:routes
+
+                }, function () {
+                    // do something with new state
+                });
+                console.log(this.state.blogcount);
             })
             .catch((error) => {
                 console.error(error);
             });
+    }
+
+
+    componentWillMount() {
+        var totalCount=0;
+        console.log("Inside Mount");
+        if(this.props.categoryProps != "getByUser") {
+            var url = `http://localhost:7777/BlogLife/Blogit/blog/blogCount?category=${this.props.categoryProps}`;
+            fetch(url)
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    console.log("Inside blogCount");
+                    totalCount = responseJson;
+                    console.log(totalCount);
+                    var pageNo = 1;
+                    var pageSize = (totalCount - (this.state.pageSize * (pageNo - 1))) >= this.state.pageSize ? this.state.pageSize : totalCount % this.state.pageSize;
+                    if (totalCount > 0) {
+                        if (this.props.categoryProps == "getAll") {
+                            this.getAllBlog(totalCount, pageNo, pageSize, this.props.categoryProps);
+                        }
+                        else {
+                            console.log(pageSize)
+                            this.getBlogByCategory(totalCount, pageNo, pageSize, this.props.categoryProps);
+                        }
+                    }
+                    else {
+                        this.setState({
+                            isLoading: false,
+                        })
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+        else{
+            console.log("filter by user");
+            var username = Auth.getUser();
+            var url = `http://localhost:7777/BlogLife/Blogit/blog/blogCount?username=`+username;
+            fetch(url)
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    console.log("Inside blogCount");
+                    totalCount = responseJson;
+                    console.log(totalCount);
+                    var pageNo = 1;
+                    var pageSize = (totalCount - (this.state.pageSize * (pageNo - 1))) >= this.state.pageSize ? this.state.pageSize : totalCount % this.state.pageSize;
+                    if (totalCount > 0) {
+                       this.getBlogsByUser(totalCount, pageNo, pageSize,username)
+                    }
+                    else {
+                        this.setState({
+                            isLoading: false,
+                        })
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
     }
 
     componentDidUpdate() {
@@ -285,7 +371,7 @@ class Tableright extends Component {
         // if(true){
                 return (
                     <div>
-                    <ReactLoading  style ={{'height':'64','width':'70'}} /></div>
+                    <ReactLoading  style ={{'height':'64px','width':'70px'}} /></div>
                 )
         }
             else if(this.state.isLoadingAll){
@@ -306,7 +392,7 @@ class Tableright extends Component {
                                 <div>
                                     <div id="displayBlogPagination">
                                         <div id="displayAllBlog" className="getAllBlog">
-                                            {this.state.dataSource.map((dynamicComponent, i) => <BlogIt deleteBlogProp={this.deleteBlog.bind(this,dynamicComponent)} launchBlogProp ={this.launchBlog.bind(this,dynamicComponent)}
+                                            {this.state.dataSource.map((dynamicComponent, i) => <BlogGroups deleteBlogProp={this.deleteBlog.bind(this,dynamicComponent)} launchBlogProp ={this.launchBlog.bind(this,dynamicComponent)}
                                                                                                         key = {i} componentData = {dynamicComponent} />)}
                                         </div>
                                         <br/>
@@ -364,4 +450,4 @@ class Tableright extends Component {
 
 }
 
-export default Tableright;
+export default ViewContent;

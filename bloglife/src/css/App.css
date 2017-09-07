@@ -191,7 +191,10 @@ width: 60%;
 }
 
 .input-search{
-    width: 70% !important;
+    width: 300px !important;
+    margin-left:120% !important;
+    margin-top:20px !important;
+    margin-bottom:10px !important;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 2px;
@@ -233,6 +236,7 @@ width: 60%;
 }
 
 .btn-go {
+  height: 40px;
   background: #00BAFF;
   border: none;
   font-size: 1rem;
@@ -240,6 +244,8 @@ width: 60%;
   border-bottom-right-radius: 3px;
   padding: 0 1em;
   margin-left:0px;
+  margin-top:21px;
+  margin-bottom:10px;
 }
 
 .btn-go, .btn-go:focus, .btn-go:hover {

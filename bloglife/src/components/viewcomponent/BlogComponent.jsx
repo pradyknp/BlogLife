@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Comments from './ViewComments'
 
 
-class Blogrender extends Component {
+class BlogComponent extends Component {
 
     componentWillMount(){
      var blogAll = document.getElementById("displayBlogPagination");
@@ -31,4 +31,4 @@ class Blogrender extends Component {
     }
 }
 
-export default Blogrender;
+export default BlogComponent;

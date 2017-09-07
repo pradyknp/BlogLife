@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CommentIt from './CommentGroup';
+import CommentGroup from './CommentGroup';
 import {stateToHTML} from 'draft-js-export-html';
+import Auth from '../../Authentication/Auth';
 
 class Comments extends Component {
 
@@ -8,7 +9,8 @@ class Comments extends Component {
         super(props)
         this.state = {
             comments: [],
-            commentsCount:0
+            commentsCount:0,
+            user:Auth.getUser()
             }
             this.addComment=this.addComment.bind(this);
             this.getAllComments = this.getAllComments.bind(this);
@@ -41,53 +43,43 @@ class Comments extends Component {
 
     deleteComment(childdata,event){
 
+        var token = "";
+        var getAllComments=this.getAllComments;
+
+        if (Auth.isUserAuthenticated()) {
+            token = Auth.getToken();
+            this.setState({
+                user:Auth.getUser()
+            })
+        }
+        else{
+            alert("please login");
+            return;
+        }
+
+
         console.log("inside deleteComment");
-        // var url = 'http://localhost:7777/BlogLife/Blogit/blog/delete/'+childdata.id;
-        //
-        // return fetch(url)
-        //     .then((response) => response.json())
-        //     .then((responseJson) => {
-        //         console.log("Inside DeleteBlog");
-        //         var pageNo = this.state.pageNo;
-        //         var blogCount= this.state.blogcount-1;
-        //         var pageSize = ((blogCount) - (this.state.pageSize * (pageNo - 1))) >= this.state.pageSize ? this.state.pageSize : blogCount%this.state.pageSize;
-        //
-        //         console.log("page No:"+pageNo+"Page Size"+pageSize);
-        //
-        //         if(pageSize == 0 && pageNo > 1){
-        //             pageSize = this.state.pageSize;
-        //             --pageNo;
-        //         }
-        //
-        //
-        //
-        //         if(blogCount>0) {
-        //             if (this.props.categoryProps == "getAll") {
-        //                 this.getAllBlog(blogCount,pageNo, pageSize, this.state.category);
-        //             }
-        //             else {
-        //                 this.getBlogByCategory(blogCount, pageNo, pageSize, this.state.category);
-        //             }
-        //         }
-        //         else{
-        //             if (this.props.categoryProps == "getAll") {
-        //                 this.setState({
-        //                     totalBlogCount:0,
-        //                     blogcount:0,
-        //
-        //                 })
-        //             }
-        //             else {
-        //                 this.setState({
-        //                     blogcount:0,
-        //                 })
-        //             }
-        //         }
-        //
-        //     })
-        //     .catch((error) => {
-        //         console.error(error)
-        //     });
+        var url = 'http://localhost:7777/BlogLife/Blogit/comment/'+childdata.id;
+
+        return fetch(url,{
+                method:"DELETE",
+                headers: {
+                    'Access-Control-Request-Headers': '*',
+                    'Authorization': token,
+                }
+            })
+            .then((response) => {
+
+                console.log("success");
+                document.getElementById("commentBody").value="";
+                document.getElementById("username").value="";
+                getAllComments();
+
+            })
+
+            .catch((error) => {
+                console.error(error)
+            });
 
     }
 
@@ -97,12 +89,23 @@ class Comments extends Component {
         var commentBody = document.getElementById("commentBody").value;
         var getAllComments=this.getAllComments;
 
+        var token= ""
+        if (Auth.isUserAuthenticated()) {
+            token = Auth.getToken();
+        }else{
+            alert("please login to post comments");
+            return;
+        }
+
+        var date = new Date();
+        var dateString = date.toString().split("GMT")[0];
+
         var data={
             "id":Math.floor((Math.random() * 200000) + 1),
             "body":commentBody,
             "username":username,
-            "createdDate":"July 29th 2016",
-            "modifiedDate":"July 34th 2016",
+            "createdDate":dateString,
+            "modifiedDate":dateString,
             "blogId":this.props.blogIDProps
         };
 
@@ -111,9 +114,9 @@ class Comments extends Component {
 
         return fetch(url, {
             method: "POST",
-            header:{
-                "Accept":"application/json",
-                "Content-Type":"application/json"
+            headers: {
+                'Access-Control-Request-Headers': '*',
+                'Authorization': token,
             },
             body:JSON.stringify(data)
         }).then(function(response) {
@@ -136,12 +139,12 @@ class Comments extends Component {
             <div>
                 <h2 style={{'textAlign': 'center'}}>Comments Sections</h2>
                 <div>
-                    <input  id="username" style={{'width': '50%','alignContent':'center', 'marginLeft':'25%'}} type="text" placeholder="User name"></input><br/>
+                    <input  id="username" disabled style={{'width': '50%','alignContent':'center', 'marginLeft':'25%'}} type="text" value={this.state.user} placeholder="User name"></input><br/>
                     <textarea id="commentBody" style={{'width': '50%','alignContent':'center', 'marginLeft':'25%','minHeight':'150px'}} placeholder="Add your comments"></textarea>
                 </div>
                 <button onClick={this.addComment}>Post Comments</button>
             <div id="displayAllComments" className="getAllComments">
-                {this.state.comments.map((dynamicComponent, i) => <CommentIt deleteCommentProp={this.deleteComment.bind(this,dynamicComponent)}
+                {this.state.comments.map((dynamicComponent, i) => <CommentGroup deleteCommentProp={this.deleteComment.bind(this,dynamicComponent)}
                                                                             key = {i} commentData = {dynamicComponent} />)}
             </div>
             </div>

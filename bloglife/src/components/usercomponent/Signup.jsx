@@ -43,6 +43,9 @@ class Signup extends Component {
             return response.json();
         }).then(function(data) {
             console.log("success");
+            window.location = "/Login";
+        }).catch(function(err) {
+            console.log(err);
         });
     }
 
@@ -64,7 +67,7 @@ class Signup extends Component {
                               <input type="password" id="password" placeholder="Password"/>
                               <label><b>Confirm Password</b></label>
                               <input type="password" id="confirmpassword" placeholder="Password"/>
-                              <button type="submit" onClick={this.createUser}>Submit</button>
+                              <button type="submit" onClick={this.createUser}>Create</button>
                             </div>
 
          </div>

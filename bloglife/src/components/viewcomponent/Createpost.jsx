@@ -10,7 +10,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Editor, EditorState, RichUtils} from 'draft-js';
 import {stateToHTML} from 'draft-js-export-html';
-import { Route, Redirect } from 'react-router'
+import { Route, Redirect } from 'react-router';
+import Auth from '../../Authentication/Auth';
 
 /*
 import Select from 'react-select';
@@ -120,40 +121,49 @@ class Createpost extends Component {
 
         var date = new Date();
         var dateString = date.toString().split("GMT")[0];
+        var token = "";
+        var username ="";
+
+        if (Auth.isUserAuthenticated()) {
+            token = Auth.getToken();
+            username=Auth.getUser();
+        }
+        else{
+            alert("please login");
+            return;
+        }
+
+        console.log(token);
 
         var data={
             "id":Math.floor((Math.random() * 100000) + 1),
             "title":title,
             "body":html,
-            "username":"pradyknp19",
+            "username":username,
             "createdDate":dateString,
             "modifiedDate":dateString,
             "category":category,
             "modifiedTime":"12.34pm"
         };
+
         var url ='http://localhost:7777/BlogLife/Blogit/blog';
         console.log(data);
 
         return fetch(url, {
             method: "POST",
-            header:{
-                "Accept":"application/json",
-                "Content-Type":"application/json"
+            headers: {
+                'Access-Control-Request-Headers': '*',
+                'Authorization': token,
             },
             body:JSON.stringify(data)
         }).then(function(response) {
+
             console.log(response);
             return response.json();
-        }).then(function(data) {
-            console.log("success");
-            {/*<Route exact path="/" render={() => (
-                loggedIn ? (
-                    <Redirect to="/dashboard"/>
-                ) : (
-                    <PublicHomePage/>
-                )
-            )}/>*/}
 
+        }).then(function(data) {
+
+            console.log("success");
             window.location = "/";
 
         }).catch(function(err) {

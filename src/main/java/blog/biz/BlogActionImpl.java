@@ -82,7 +82,7 @@ public class BlogActionImpl implements BlogAction {
 	public List<Blog> viewAll(int pageno, int pagesize)
 			throws BlogNotFoundException, InvalidBlogException, BlogException {
 
-		int total = (int) totalCount("getAll");
+		int total = (int) totalCount("getAll",null);
 		
 		if(pageno ==0 || pagesize ==0){
 			pageno=1;
@@ -111,7 +111,7 @@ public class BlogActionImpl implements BlogAction {
 	public List<Blog> findByCategory(String category, int pageno, int pagesize)
 			throws BlogNotFoundException, InvalidBlogException, BlogException {
 
-		int total = (int) totalCount(category);
+		int total = (int) totalCount(category,null);
 
 		if (total / pagesize < pageno) {
 			startIndex = (total / pagesize - 1) * pagesize;
@@ -238,7 +238,7 @@ public class BlogActionImpl implements BlogAction {
 
 	@Override
 	public void deleteComment(int commentID) throws CommentNotFoundException, CommentException {
-		commentDAO.deleteCommentUsingID(commentID);
+		commentDAO.deleteById(commentID);
 
 	}
 
@@ -295,12 +295,17 @@ public class BlogActionImpl implements BlogAction {
 	}
 
 	@Override
-	public long totalCount(String category) throws BlogNotFoundException, BlogException {
-
+	public long totalCount(String category,String username) throws BlogNotFoundException, BlogException {
+		
+		if(category != null){
 		if (category.equals("getAll"))
 			return blogDAO.find().count();
 		else
 			return blogDAO.getCount(category);
+		}
+		else{
+			return blogDAO.getCountByUser(username);
+		}
 	}
 
 	@Override
@@ -319,6 +324,12 @@ public class BlogActionImpl implements BlogAction {
 		jwtToken.setToken(token);
 		tokenDAO.save(jwtToken);
 		return token;
+	}
+
+	@Override
+	public boolean deleteTokenByUser(AuthToken username) {
+		tokenDAO.delete(username);
+		return false;
 	}
 
 }

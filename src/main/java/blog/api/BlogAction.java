@@ -55,10 +55,12 @@ public interface BlogAction {
 	
 	void deleteUser(String username) throws UserNotFoundException,UserException;
 	
-	long totalCount(String category) throws BlogNotFoundException,BlogException;
+	long totalCount(String category,String username) throws BlogNotFoundException,BlogException;
 
 	TokenDao getTokenDAO();
-
+	
+	boolean deleteTokenByUser(AuthToken username);
+	
 	String issueAndStoreToken(String userName);
 
 	boolean authenticateUser(User user) throws UserNotFoundException, UserException;

@@ -26,7 +26,7 @@ class CommentGroup extends Component {
 
 
 
-        if(username === `${this.props.deleteCommentProp.username}`)
+        if(username === `${this.props.commentData.username}`)
         {
             style ={
                 'display':'block'

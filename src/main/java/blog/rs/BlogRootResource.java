@@ -197,9 +197,11 @@ public class BlogRootResource {
 
 	@POST
 	@Path("/createUser")
-	@Consumes({ MediaType.APPLICATION_JSON })
+	@Consumes({ MediaType.TEXT_PLAIN })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response createNewUser(User user) {
+	public Response createNewUser(String inputUser) {
+		Gson g = new Gson();
+		User user = g.fromJson(inputUser, User.class);
 		blogAction.createUser(user);
 		return Response.ok().entity(user).build();
 	}

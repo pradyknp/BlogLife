@@ -64,7 +64,7 @@
       <file leaf-file-name="App.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/css/App.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="267">
               <caret line="193" column="13" lean-forward="false" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
               <folding />
             </state>
@@ -116,8 +116,8 @@
       <file leaf-file-name="CommentGroup.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="41" column="114" lean-forward="false" selection-start-line="41" selection-start-column="114" selection-end-line="41" selection-end-column="114" />
+            <state relative-caret-position="561">
+              <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -128,7 +128,7 @@
       <file leaf-file-name="ViewComments.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewComments.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1819">
+            <state relative-caret-position="-221">
               <caret line="107" column="27" lean-forward="false" selection-start-line="107" selection-start-column="27" selection-end-line="107" selection-end-column="27" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -153,7 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&lt;editor</find>
       <find>tableleft</find>
       <find>Homepage</find>
       <find>.map</find>
@@ -180,9 +179,10 @@
       <find>style</find>
       <find>please login</find>
       <find>getAllBlog</find>
-      <find>addComment</find>
       <find>input-sea</find>
       <find>.btn-go</find>
+      <find>250px</find>
+      <find>addComment</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -235,10 +235,10 @@
         <option value="$PROJECT_DIR$/src/components/viewcomponent/Createpost.jsx" />
         <option value="$PROJECT_DIR$/src/components/viewcomponent/BlogGroups.jsx" />
         <option value="$PROJECT_DIR$/src/components/viewcomponent/ViewContent.jsx" />
-        <option value="$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx" />
         <option value="$PROJECT_DIR$/src/components/viewcomponent/ViewComments.jsx" />
         <option value="$PROJECT_DIR$/src/components/viewcomponent/ViewFrame.jsx" />
         <option value="$PROJECT_DIR$/src/components/headercomponent/Header.jsx" />
+        <option value="$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx" />
         <option value="$PROJECT_DIR$/src/css/App.css" />
       </list>
     </option>
@@ -394,12 +394,12 @@
       <workItem from="1503899725821" duration="104193000" />
       <workItem from="1504337526372" duration="8359000" />
       <workItem from="1504500304694" duration="22000" />
-      <workItem from="1504500477170" duration="64799000" />
+      <workItem from="1504500477170" duration="65944000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218507000" />
+    <option name="totallyTimeSpent" value="219652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="834" extended-state="6" />
@@ -771,16 +771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="41" column="114" lean-forward="false" selection-start-line="41" selection-start-column="114" selection-end-line="41" selection-end-column="114" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/Createpost.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -788,16 +778,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#299#340#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewComments.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1819">
-          <caret line="107" column="27" lean-forward="false" selection-start-line="107" selection-start-column="27" selection-end-line="107" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -828,9 +808,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewComments.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="107" column="27" lean-forward="false" selection-start-line="107" selection-start-column="27" selection-end-line="107" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/css/App.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="267">
           <caret line="193" column="13" lean-forward="false" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
           <folding />
         </state>

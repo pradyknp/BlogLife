@@ -1,6 +1,5 @@
 // npm install -save react-cookie
 import React, { Component } from 'react';
-import { instanceOf } from 'prop-types';
 import Auth from '../../Authentication/Auth';
 
 class Login extends Component {
@@ -31,7 +30,7 @@ class Login extends Component {
     }
 
     componentWillMount() {
-        const { cookies } = this.props;
+
     }
 
     changeUserData(e){
@@ -41,7 +40,6 @@ class Login extends Component {
     }
 
     sendCredentials(e){
-        const { cookies } = this.props;
 
         e.preventDefault();
        var url = `${this.state.url}/login`;
@@ -59,16 +57,16 @@ class Login extends Component {
         }).then(function(response) {
             console.log(response);
 
-            if(response.status == 200) {
+            if(response.status === 200) {
                 document.getElementById("error").style.display="none";
                 return response.json();
             }
-            else if(response.status == 500) {
+            else if(response.status === 500) {
                document.getElementById("error").innerHTML="User does not exist. Please sign up";
                 document.getElementById("error").style.display="block";
                return;
             }
-            else if(response.status == 401){
+            else if(response.status === 401){
                 document.getElementById("error").innerHTML="Password entered is wrong";
                 document.getElementById("error").style.display="block";
                 return;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ViewBlogContent from "./ViewBlogContent";
-import ReactDOM from 'react-dom';
 import Comments from './ViewComments';
 import downvote from '../../images/downvote.png';
 import upvote from '../../images/upvote.png';
@@ -102,8 +101,8 @@ class BlogComponent extends Component {
         return (
             <div id ="showBlog"   className="showBlog" >
                 <ViewBlogContent  blogDataProp={this.props.blogData}></ViewBlogContent>
-                <div className="likeDislike"><button onClick={this.likeBlog} className="upvoteBut"><img src={upvote} className="upvote">
-                </img></button>&nbsp;{this.state.likes} &nbsp; &nbsp; <button onClick={this.dislikeBlog} className="upvoteBut"><img src={downvote} className="upvote"></img></button>&nbsp;{this.state.dislikes}</div>
+                <div className="likeDislike"><button onClick={this.likeBlog} className="upvoteBut"><img src={upvote} alt="upvote" className="upvote">
+                </img></button>&nbsp;{this.state.likes} &nbsp; &nbsp; <button onClick={this.dislikeBlog} className="upvoteBut"><img src={downvote} alt="downvote" className="upvote"></img></button>&nbsp;{this.state.dislikes}</div>
                 <hr/>
                 <div>
                     <Comments blogIDProps={this.props.blogData.id}/>

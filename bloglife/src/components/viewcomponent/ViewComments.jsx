@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CommentGroup from './CommentGroup';
-import {stateToHTML} from 'draft-js-export-html';
+// import {stateToHTML} from 'draft-js-export-html';
 import Auth from '../../Authentication/Auth';
 
 class Comments extends Component {

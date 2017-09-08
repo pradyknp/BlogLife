@@ -8,12 +8,11 @@ import React, { Component } from 'react';
 
 import {
     BrowserRouter as Router,
-    Route,
-    Link
+    Route
 } from 'react-router-dom';
 
 import Header from './components/headercomponent/Header.jsx';
-import Footer from './components/footercomponent/Footer.jsx';
+/*import Footer from './components/footercomponent/Footer.jsx';*/
 import Createpost from './components/viewcomponent/Createpost.jsx';
 import Login from './components/usercomponent/Login.jsx';
 import Logout from './components/usercomponent/Logout.jsx';
@@ -22,7 +21,7 @@ import ViewContent from './components/viewcomponent/ViewContent';
 import LaunchBlog from './components/viewcomponent/LaunchBlog.jsx';
 import ViewFrame from './components/viewcomponent/ViewFrame.jsx';
 import Auth from './Authentication/Auth';
-import Blogrender from './components/viewcomponent/BlogComponent';
+/*import Blogrender from './components/viewcomponent/BlogComponent';*/
 
 // import logo from './logo.svg';
 import './css/App.css';

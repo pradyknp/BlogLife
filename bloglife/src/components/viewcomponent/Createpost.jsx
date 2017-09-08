@@ -7,10 +7,8 @@ npm install react-form-data --save*/
 /*npm install react-select --save*/
 
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import {Editor, EditorState, RichUtils} from 'draft-js';
 import {stateToHTML} from 'draft-js-export-html';
-import { Route, Redirect } from 'react-router';
 import Auth from '../../Authentication/Auth';
 
 /*
@@ -108,7 +106,8 @@ class Createpost extends Component {
             newOption.label = category.label;
             newOption.value = category.value;
             categorySelection.appendChild(newOption);
-        });
+        }
+        );
 
     }
 

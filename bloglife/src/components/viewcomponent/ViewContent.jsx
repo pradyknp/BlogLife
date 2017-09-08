@@ -1,15 +1,12 @@
 // npm install -save react-loading
 
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import ReactLoading from 'react-loading';
 import Auth from '../../Authentication/Auth';
 import loading from '../../images/loading.gif'
 
 import {
     BrowserRouter as Router,
-    Route,
-    Link
+    Route
 } from 'react-router-dom';
 
 import BlogGroups from "./BlogGroups";
@@ -50,7 +47,7 @@ class ViewContent extends Component {
 
         console.log(pageSize);
         if(this.state.blogcount > 0) {
-            if (this.props.categoryProps == "getAll") {
+            if (this.props.categoryProps === "getAll") {
                 this.getAllBlog(this.state.blogcount,pageNo,pageSize, this.state.category);
             }
             else {
@@ -67,7 +64,7 @@ class ViewContent extends Component {
         var pageSize = (this.state.blogcount - (this.state.pageSize * (pageNo - 1))) >= this.state.pageSize ? this.state.pageSize : this.state.blogcount%this.state.pageSize;
         console.log(pageSize);
         if(this.state.blogcount > 0) {
-            if (this.props.categoryProps == "getAll") {
+            if (this.props.categoryProps ==="getAll") {
                 this.getAllBlog(this.state.blogcount,pageNo, pageSize, this.props.categoryProps);
             }
             else {
@@ -128,7 +125,7 @@ class ViewContent extends Component {
 
                 console.log("page No:"+pageNo+"Page Size"+pageSize);
 
-                if(pageSize == 0 && pageNo > 1){
+                if(pageSize === 0 && pageNo > 1){
                     pageSize = this.state.pageSize;
                     --pageNo;
                 }
@@ -136,10 +133,10 @@ class ViewContent extends Component {
 
 
                 if(blogCount>0) {
-                    if (this.props.categoryProps == "getAll") {
+                    if (this.props.categoryProps === "getAll") {
                         this.getAllBlog(blogCount,pageNo, pageSize, this.state.category);
                     }
-                    else if(this.props.categoryProps == "getByUser"){
+                    else if(this.props.categoryProps === "getByUser"){
                         this.getBlogsByUser(blogCount, pageNo, pageSize, this.state.username);
                     }
                     else{
@@ -147,7 +144,7 @@ class ViewContent extends Component {
                     }
                 }
                 else{
-                    if (this.props.categoryProps == "getAll") {
+                    if (this.props.categoryProps === "getAll") {
                        this.setState({
                            totalBlogCount:0,
                            blogcount:0,
@@ -294,9 +291,10 @@ class ViewContent extends Component {
 
     componentWillMount() {
         var totalCount=0;
+        var url=""
         console.log("Inside Mount");
-        if(this.props.categoryProps != "getByUser") {
-            var url = `${this.state.url}/blog/blogCount?category=${this.props.categoryProps}`;
+        if(this.props.categoryProps !== "getByUser") {
+            url = `${this.state.url}/blog/blogCount?category=${this.props.categoryProps}`;
             fetch(url)
                 .then((response) => response.json())
                 .then((responseJson) => {
@@ -306,7 +304,7 @@ class ViewContent extends Component {
                     var pageNo = 1;
                     var pageSize = (totalCount - (this.state.pageSize * (pageNo - 1))) >= this.state.pageSize ? this.state.pageSize : totalCount % this.state.pageSize;
                     if (totalCount > 0) {
-                        if (this.props.categoryProps == "getAll") {
+                        if (this.props.categoryProps === "getAll") {
                             this.getAllBlog(totalCount, pageNo, pageSize, this.props.categoryProps);
                         }
                         else {
@@ -327,7 +325,7 @@ class ViewContent extends Component {
         else{
             console.log("filter by user");
             var username = this.state.username;
-            var url = `${this.state.url}/blog/blogCount?username=`+username;
+            url = `${this.state.url}/blog/blogCount?username=`+username;
             fetch(url)
                 .then((response) => response.json())
                 .then((responseJson) => {
@@ -378,7 +376,7 @@ class ViewContent extends Component {
                 console.log("inside showBlog of table right getALL");
                 console.log(this.state.isLoadingAll);
                 console.log(this.state.category);
-                if(this.state.blogcount == 0){
+                if(this.state.blogcount === 0){
                     return (
                         <div>
                             <b>There are no Blog posts to be displayed</b>

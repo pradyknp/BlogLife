@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import {Editor, EditorState, RichUtils} from 'draft-js';
-import {stateToHTML} from 'draft-js-export-html';
+/*import { EditorState, RichUtils} from 'draft-js';
+import {stateToHTML} from 'draft-js-export-html';*/
 
 
 
 class viewBlogContent extends Component {
-
-    constructor(props){
-        super(props);
-
-        /*this.bloglaunch=this.bloglaunch.bind(this);*/
-    }
 
    /* bloglaunch(){
         console.log("inside bloglaunch");

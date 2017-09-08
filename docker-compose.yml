@@ -1,0 +1,12 @@
+app: 
+  image: "mohan9282/trialblog:staging"
+  links: 
+    - "db:db"
+  ports: 
+    - "9999:8080"
+db:
+  image: mysql:latest
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+  volumes:
+    - /var/lib/mysql

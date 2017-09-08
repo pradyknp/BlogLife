@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class Signup extends Component {
     constructor(props){
         super(props);
-
+        this.state={
+            url:window.location.origin+"/BlogLife/Blogit"
+        }
         this.createUser=this.createUser.bind(this);
     }
 
@@ -28,7 +30,7 @@ class Signup extends Component {
         };
 
 
-        var url ='http://localhost:7777/BlogLife/Blogit/createUser';
+        var url =`${this.state.url}/createUser`;
         console.log(data);
 
         return fetch(url, {

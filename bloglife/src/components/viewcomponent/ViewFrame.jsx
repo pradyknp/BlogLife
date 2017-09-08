@@ -18,7 +18,7 @@ constructor(props){
     super(props);
     this.state={
         routes:[
-          { path: '/',
+          { path: '/BlogLife',
             exact: true,
             sidebar: () => <div><b>Filtered By View All</b></div>,
             main: () => <ViewContent categoryProps="getAll"/>
@@ -99,7 +99,7 @@ return(
 
         <ul style={{ listStyleType: 'none', padding: '0px 0px 0px 10px' }}>
 
-          <li className="category"><Link to="/">View All</Link></li><br/>
+          <li className="category"><Link to="/BlogLife">View All</Link></li><br/>
           <li className="category"><Link to="/category/entertainment">Entertainment</Link></li><br/>
           <li className="category"><Link to="/category/politics">Politics</Link></li><br/>
           <li className="category" ><Link to="/category/travel">Travel</Link></li><br/>

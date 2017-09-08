@@ -20,6 +20,7 @@ class Login extends Component {
             errors:{},
             successMessage,
             isLoggedin:false,
+            url:window.location.origin+"/BlogLife/Blogit",
             username:"pradyknp20",
             password:"Sandeep",
             token:""
@@ -43,7 +44,7 @@ class Login extends Component {
         const { cookies } = this.props;
 
         e.preventDefault();
-       var url = 'http://localhost:7777/BlogLife/Blogit/login'
+       var url = `${this.state.url}/login`;
         var username = this.state.username;
        var password = this.state.password;
 
@@ -82,7 +83,7 @@ class Login extends Component {
             console.log(data.token);
 
             Auth.authenticateUser(data.token,username);
-            window.location.href="/"
+            window.location.href="/BlogLife"
 
         }).catch(function(err) {
             console.log(err);

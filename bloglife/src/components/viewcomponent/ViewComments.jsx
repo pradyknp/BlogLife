@@ -10,6 +10,7 @@ class Comments extends Component {
         this.state = {
             comments: [],
             commentsCount:0,
+            url:window.location.origin+"/BlogLife/Blogit",
             user:Auth.getUser()
             }
             this.addComment=this.addComment.bind(this);
@@ -19,7 +20,7 @@ class Comments extends Component {
     getAllComments() {
         var commentCount=0;
 
-        var url =`http://localhost:7777/BlogLife/Blogit/blog/getComments?blogId=${this.props.blogIDProps}`;
+        var url =`${this.state.url}/blog/getComments?blogId=${this.props.blogIDProps}`;
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -59,7 +60,7 @@ class Comments extends Component {
 
 
         console.log("inside deleteComment");
-        var url = 'http://localhost:7777/BlogLife/Blogit/comment/'+childdata.id;
+        var url = `${this.state.url}/comment/`+childdata.id;
 
         return fetch(url,{
                 method:"DELETE",
@@ -109,7 +110,7 @@ class Comments extends Component {
             "blogId":this.props.blogIDProps
         };
 
-        var url ='http://localhost:7777/BlogLife/Blogit/blog/postComment';
+        var url =`${this.state.url}/blog/postComment`;
         console.log(data);
 
         return fetch(url, {

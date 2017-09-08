@@ -25,6 +25,7 @@ class ViewContent extends Component {
         this.state = {
             isLoading: true,
             isLoadingAll:true,
+            url:window.location.origin+"/BlogLife/Blogit",
             dataSource:[],
             category:"getAll",
             totalBlogCount:0,
@@ -110,7 +111,7 @@ class ViewContent extends Component {
             return;
         }
 
-      var url = 'http://localhost:7777/BlogLife/Blogit/blog/'+childdata.id;
+      var url = `${this.state.url}/blog/`+childdata.id;
 
         return fetch(url,{
             method:"DELETE",
@@ -168,7 +169,7 @@ class ViewContent extends Component {
     }
 
     getAllBlog(totalCount,pageno,pagesize){
-        var url = 'http://localhost:7777/BlogLife/Blogit/blog/getAll?pageno='+pageno+'&pagesize='+pagesize;
+        var url = `${this.state.url}/blog/getAll?pageno=`+pageno+'&pagesize='+pagesize;
 
         return fetch(url)
             .then((response) => response.json())
@@ -207,7 +208,7 @@ class ViewContent extends Component {
     }
 
     getBlogByCategory(totalCount,pageno,pagesize,category){
-        var url = `http://localhost:7777/BlogLife/Blogit/blog/category?pageno=`+pageno+`&pagesize=`+pagesize+`&search=`+category;
+        var url = `${this.state.url}/blog/category?pageno=`+pageno+`&pagesize=`+pagesize+`&search=`+category;
 
         console.log(url);
 
@@ -249,7 +250,7 @@ class ViewContent extends Component {
     }
 
     getBlogsByUser(totalCount,pageno,pagesize,username){
-        var url = `http://localhost:7777/BlogLife/Blogit/blog/user/`+username+`?pageno=`+pageno+`&pagesize=`+pagesize;
+        var url = `${this.state.url}/blog/user/`+username+`?pageno=`+pageno+`&pagesize=`+pagesize;
 
         console.log(url);
 
@@ -295,7 +296,7 @@ class ViewContent extends Component {
         var totalCount=0;
         console.log("Inside Mount");
         if(this.props.categoryProps != "getByUser") {
-            var url = `http://localhost:7777/BlogLife/Blogit/blog/blogCount?category=${this.props.categoryProps}`;
+            var url = `${this.state.url}/blog/blogCount?category=${this.props.categoryProps}`;
             fetch(url)
                 .then((response) => response.json())
                 .then((responseJson) => {
@@ -326,7 +327,7 @@ class ViewContent extends Component {
         else{
             console.log("filter by user");
             var username = this.state.username;
-            var url = `http://localhost:7777/BlogLife/Blogit/blog/blogCount?username=`+username;
+            var url = `${this.state.url}/blog/blogCount?username=`+username;
             fetch(url)
                 .then((response) => response.json())
                 .then((responseJson) => {

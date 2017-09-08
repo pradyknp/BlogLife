@@ -28,6 +28,7 @@ class Createpost extends Component {
             editorState: EditorState.createEmpty(),
             blogCount:1,
             title:"title",
+            url:window.location.origin+"/BlogLife/Blogit",
             category:"entertainment",
             options:[{
                 value:"Entertainment",
@@ -81,7 +82,8 @@ class Createpost extends Component {
 
     componentWillMount() {
 
-        var url =`http://localhost:7777/BlogLife/Blogit/blog/blogCount?category=${this.props.categoryProps}`;
+        var url =`${this.state.url}/blog/blogCount?category=${this.props.categoryProps}`;
+
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -146,7 +148,7 @@ class Createpost extends Component {
             "modifiedTime":"12.34pm"
         };
 
-        var url ='http://localhost:7777/BlogLife/Blogit/blog';
+        var url =`${this.state.url}/blog`;
         console.log(data);
 
         return fetch(url, {
@@ -164,7 +166,7 @@ class Createpost extends Component {
         }).then(function(data) {
 
             console.log("success");
-            window.location = "/";
+            window.location.href = "/BlogLife";
 
         }).catch(function(err) {
             console.log(err);

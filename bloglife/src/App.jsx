@@ -60,7 +60,7 @@ class App extends Component {
         <Router>
             <div >
                 <Header loggedinProp={this.state.isloggedin} />
-                <Route exact path='/' component={ViewFrame} />
+                <Route exact path='/BlogLife' component={ViewFrame} />
                 <Route exact path='/myblogs' component={ViewFrame} />
                 <Route exact path='/category/*' component={ViewFrame} />
                 <Route exact path='/Createpost' component={Createpost} />

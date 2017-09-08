@@ -29,7 +29,7 @@ class Header extends Component {
                             <nav>
                             <ul>
                                 <li><Link to="/myblogs">Hi &nbsp; {currentUser}!</Link></li>
-                                <li><Link to="/">Home</Link></li>
+                                <li><Link to="/BlogLife">Home</Link></li>
                                 <li><Link to="/Createpost" id="createPost">Create Post</Link></li>
                                 <li><Link to="/Logout">Logout</Link></li>
                             </ul>
@@ -57,7 +57,7 @@ class Header extends Component {
                 <nav>
                 <ul>
                     <li id="login-list"><Link to="/login">Logged In</Link></li>
-                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/BlogLife">Home</Link></li>
                     <li><Link to="/Login">Login</Link></li>
                     <li><Link to="/Signup">Sign up</Link></li>
                 </ul>

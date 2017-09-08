@@ -16,6 +16,7 @@ class BlogComponent extends Component {
             dislikes:this.props.blogData.dislikes,
             likestate:true,
             dislikestate:true,
+            url:window.location.origin+"/BlogLife/Blogit",
             isLoggedin:Auth.isUserAuthenticated(),
             user:Auth.getUser()
         }
@@ -58,7 +59,7 @@ class BlogComponent extends Component {
     callAPI(blogID,command,dislikestate,likestate){
 
         var token = Auth.getToken();
-        var url = 'http://localhost:7777/BlogLife/Blogit/blog/'+blogID+'/'+command;
+        var url = `${this.state.url}/blog/`+blogID+'/'+command;
 
         return fetch(url, {
                 method: "Post",

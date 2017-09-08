@@ -107,8 +107,8 @@
       <file leaf-file-name="BlogGroups.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/BlogGroups.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="62" column="197" lean-forward="false" selection-start-line="62" selection-start-column="197" selection-end-line="62" selection-end-column="197" />
+            <state relative-caret-position="354">
+              <caret line="59" column="245" lean-forward="false" selection-start-line="59" selection-start-column="245" selection-end-line="59" selection-end-column="245" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -213,7 +213,6 @@
         <option value="$PROJECT_DIR$/src/utis/setAuthorizationToken.jsx" />
         <option value="$PROJECT_DIR$/src/Authentication/Auth.jsx" />
         <option value="$PROJECT_DIR$/src/css/App.css" />
-        <option value="$PROJECT_DIR$/src/components/viewcomponent/BlogGroups.jsx" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/usercomponent/Signup.jsx" />
         <option value="$PROJECT_DIR$/package.json" />
@@ -228,6 +227,7 @@
         <option value="$PROJECT_DIR$/src/components/viewcomponent/ViewComments.jsx" />
         <option value="$PROJECT_DIR$/src/components/viewcomponent/ViewBlogContent.jsx" />
         <option value="$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx" />
+        <option value="$PROJECT_DIR$/src/components/viewcomponent/BlogGroups.jsx" />
       </list>
     </option>
   </component>
@@ -370,12 +370,12 @@
       <workItem from="1503899725821" duration="104193000" />
       <workItem from="1504337526372" duration="8359000" />
       <workItem from="1504500304694" duration="22000" />
-      <workItem from="1504500477170" duration="88548000" />
+      <workItem from="1504500477170" duration="89624000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242256000" />
+    <option name="totallyTimeSpent" value="243332000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="834" extended-state="6" />
@@ -814,8 +814,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/BlogGroups.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="62" column="197" lean-forward="false" selection-start-line="62" selection-start-column="197" selection-end-line="62" selection-end-column="197" />
+        <state relative-caret-position="354">
+          <caret line="59" column="245" lean-forward="false" selection-start-line="59" selection-start-column="245" selection-end-line="59" selection-end-column="245" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

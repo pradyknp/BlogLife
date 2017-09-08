@@ -57,7 +57,7 @@ bloglaunch(){
                 <div className="allBlogs" ref="allBlogs">
                     <div className="blogTitle"><h3 style={{'width':'100%'}}><Link to={`/Blog/`+title}>{titleTodispay}</Link></h3>
                         <button id="deleteBlog" style={style} className="deleteBlogBut" name="deleteBlog" onClick={this.props.deleteBlogProp}>x</button></div>
-                    <h6> Created By <b>{this.props.componentData.username}</b> on {this.props.componentData.createdDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments {this.props.componentData.comments}</a></h6>
+                    <h6> Created By <b>{this.props.componentData.username}</b> on {this.props.componentData.createdDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments {this.props.componentData.commentCount}</a></h6>
                     <br/>
                     <div> <span dangerouslySetInnerHTML={this.rawMarkup()}/></div>
                     <div className="likeDislike"><img src={upvote} alt="likes" className="upvote"></img>&nbsp;{this.props.componentData.likes} &nbsp; &nbsp; &nbsp; <img src={downvote} alt="dislikes" className="upvote"></img>&nbsp;{this.props.componentData.dislikes}</div>

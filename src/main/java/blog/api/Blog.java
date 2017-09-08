@@ -20,7 +20,17 @@ public class Blog {
 	private String category;
 	private int likes = 0;
 	private int dislikes = 0;
+	private int commentCount=0;
 	
+	public int getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(boolean increment) {
+		if(increment)
+			this.commentCount++;
+		else
+			this.commentCount--;
+	}
 	public int getLikes() {
 		return likes;
 	}

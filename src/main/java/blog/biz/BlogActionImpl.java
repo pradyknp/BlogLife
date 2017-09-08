@@ -32,7 +32,7 @@ public class BlogActionImpl implements BlogAction {
 	// IBlogViewDAO dao = new InMemoryBlogDAO();
 	// IBlogViewDAO dao = new MongoDAOImpl();
 
-	MongoClient mongoClient = new MongoClient("172.31.45.12"); // 27017
+	MongoClient mongoClient = new MongoClient("localhost"); // 27017
 	Morphia morphia = new Morphia();
 	String databaseName = "blogview";
 	Datastore datastore = morphia.createDatastore(mongoClient, databaseName);
@@ -221,7 +221,10 @@ public class BlogActionImpl implements BlogAction {
 	public void postComment(Comment comment) throws InvalidCommentException, CommentException {
 		if (comment == null)
 			throw new BlogNotFoundException();
-
+		
+		Blog blog = blogDAO.get(comment.getBlogId());
+		blog.setCommentCount(true);
+		blogDAO.save(blog);
 		commentDAO.save(comment);
 
 	}
@@ -233,6 +236,10 @@ public class BlogActionImpl implements BlogAction {
 
 	@Override
 	public void deleteComment(int commentID) throws CommentNotFoundException, CommentException {
+		Comment comment = commentDAO.get(commentID);
+		Blog blog = blogDAO.get(comment.getBlogId());
+		blog.setCommentCount(false);
+		blogDAO.save(blog);
 		commentDAO.deleteById(commentID);
 
 	}

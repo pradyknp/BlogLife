@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ReactLoading from 'react-loading';
 import Auth from '../../Authentication/Auth';
+import loading from '../../images/loading.gif'
 
 import {
     BrowserRouter as Router,
@@ -30,6 +31,7 @@ class ViewContent extends Component {
             blogcount:0,
             pageSize:5,
             pageNo:1,
+            username:Auth.getUser(),
             blogRoute:[],
             blogData:{
             }
@@ -136,7 +138,10 @@ class ViewContent extends Component {
                     if (this.props.categoryProps == "getAll") {
                         this.getAllBlog(blogCount,pageNo, pageSize, this.state.category);
                     }
-                    else {
+                    else if(this.props.categoryProps == "getByUser"){
+                        this.getBlogsByUser(blogCount, pageNo, pageSize, this.state.username);
+                    }
+                    else{
                         this.getBlogByCategory(blogCount, pageNo, pageSize, this.state.category);
                     }
                 }
@@ -180,13 +185,6 @@ class ViewContent extends Component {
                        main: () => <BlogComponent blogData={route}/>
                     }
                 ));
-
-               /* responseJson.map(routes,index) =>[
-                    {
-                        path: '/Blog/'+childdata.title.split(" ").join("_"),
-                        exact: true,
-                        main: () => <BlogComponent blogData={this.state.blogData}/>
-                    }];*/
 
                 this.setState({
                     isLoading: false,
@@ -327,7 +325,7 @@ class ViewContent extends Component {
         }
         else{
             console.log("filter by user");
-            var username = Auth.getUser();
+            var username = this.state.username;
             var url = `http://localhost:7777/BlogLife/Blogit/blog/blogCount?username=`+username;
             fetch(url)
                 .then((response) => response.json())
@@ -370,8 +368,9 @@ class ViewContent extends Component {
         if(this.state.isLoading){
         // if(true){
                 return (
-                    <div>
-                    <ReactLoading  style ={{'height':'64px','width':'70px'}} /></div>
+
+                        <img src={loading} className="loadingBlog" alt="Smiley face"></img>
+
                 )
         }
             else if(this.state.isLoadingAll){

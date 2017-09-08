@@ -50,7 +50,7 @@ class Header extends Component {
                 <span><h1>Welcome to Blogging Website</h1></span>
                  <span className="input-group">
                      <label htmlFor="general-search-search-input" className="isvishidden">Search the site</label>
-                     <input type="text" style={{'margin-left':'150% !important'}} className="input-search" name="q" ref="general-search-search-input" placeholder="Search By Title"></input>
+                     <input type="text" style={{'marginLeft':'150% !important'}} className="input-search" name="q" ref="general-search-search-input" placeholder="Search By Title"></input>
                       <button className="btn btn-go">GO</button>
                        </span>
                    <span>

@@ -15,6 +15,32 @@ public class Comment {
 	private int blogId;
 //	private List<String> replies;
 	
+	private int likes = 0;
+	private int dislikes = 0;
+	
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes() {
+		this.likes++;
+	}
+	
+	public void setUnLikes() {
+		this.likes--;
+	}
+	
+	public int getDislikes() {
+		return dislikes;
+	}
+	
+	public void setDislikes() {
+		this.dislikes++;
+	}
+	
+	public void setUnDislikes() {
+		this.dislikes--;
+	}
+	
 	public int getId() {
 		return id;
 	}

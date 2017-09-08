@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Auth from '../../Authentication/Auth';
+import downvote from '../../images/downvote.png';
+import upvote from '../../images/upvote.png';
 
 class CommentGroup extends Component {
 
@@ -42,7 +44,7 @@ class CommentGroup extends Component {
                     <h6><b>{this.props.commentData.username}</b> commented on {this.props.commentData.modifiedDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
                     <br/>
                     <div> {this.props.commentData.body}</div>
-                    <div className="likeDislike">Like&nbsp;{this.props.commentData.likes} &nbsp; &nbsp; &nbsp; Dislike&nbsp;{this.props.commentData.dislikes}</div>
+                    <div className="likeDislike"><button className="upvoteBut"><img src={upvote} className="upvote"></img></button>&nbsp;3{this.props.commentData.likes} &nbsp; &nbsp; &nbsp; <button className="upvoteBut"><img src={downvote} className="upvote"></img></button>&nbsp;3{this.props.commentData.dislikes}</div>
                 </div>
             </div>
         );

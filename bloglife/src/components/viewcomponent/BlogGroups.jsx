@@ -3,6 +3,8 @@ import {
     Link
 } from 'react-router-dom';
 import Auth from '../../Authentication/Auth';
+import upvote from '../../images/upvote.png';
+import downvote from '../../images/downvote.png'
 
 class BlogGroups extends Component {
 
@@ -58,7 +60,7 @@ bloglaunch(){
                     <h6> Created By <b>{this.props.componentData.username}</b> on {this.props.componentData.createdDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments {this.props.componentData.comments}</a></h6>
                     <br/>
                     <div> <span dangerouslySetInnerHTML={this.rawMarkup()}/></div>
-                    <div className="likeDislike">Like&nbsp;{this.props.componentData.likes} &nbsp; &nbsp; &nbsp; Dislike&nbsp;{this.props.componentData.dislikes}</div>
+                    <div className="likeDislike"><img src={upvote} className="upvote"></img>&nbsp;{this.props.componentData.likes} &nbsp; &nbsp; &nbsp; <img src={downvote} className="upvote"></img>&nbsp;{this.props.componentData.dislikes}</div>
                 </div>
             </div>
         );

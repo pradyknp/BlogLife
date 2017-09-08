@@ -14,24 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Createpost.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/Createpost.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="122" column="57" lean-forward="true" selection-start-line="121" selection-start-column="7" selection-end-line="122" selection-end-column="57" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#299#340#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="App.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="676">
-              <caret line="69" column="66" lean-forward="false" selection-start-line="69" selection-start-column="66" selection-end-line="69" selection-end-column="66" />
+            <state relative-caret-position="583">
+              <caret line="62" column="36" lean-forward="false" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
               <folding>
                 <element signature="e#159#200#0" expanded="true" />
               </folding>
@@ -42,96 +29,10 @@
       <file leaf-file-name="ViewFrame.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewFrame.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="117" column="7" lean-forward="false" selection-start-line="117" selection-start-column="4" selection-end-line="124" selection-end-column="17" />
+            <state relative-caret-position="-12">
+              <caret line="96" column="16" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Header.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/headercomponent/Header.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="52" column="78" lean-forward="false" selection-start-line="52" selection-start-column="78" selection-end-line="52" selection-end-column="78" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/css/App.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="193" column="13" lean-forward="false" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BlogComponent.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/BlogComponent.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="41" lean-forward="true" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BlogGroups.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/BlogGroups.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="56" column="61" lean-forward="true" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="61" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-                <marker date="1504790112708" expanded="true" signature="1291:1437" ph="..." />
-                <marker date="1504790112708" expanded="true" signature="1350:1437" ph="..." />
-                <marker date="1504790112708" expanded="false" signature="1409:1427" ph="..." />
-                <marker date="1504790112708" expanded="true" signature="1536:1543" ph="..." />
-                <marker date="1504790112708" expanded="false" signature="1761:1767" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="1767:1773" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="1773:1779" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="1779:1785" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="1785:1791" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="1791:1797" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="1797:1803" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="1803:1809" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="1809:1815" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="1815:1821" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="1821:1827" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="2055:2061" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="2094:2100" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="2101:2107" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="2108:2114" ph=" " />
-                <marker date="1504790112708" expanded="false" signature="2122:2128" ph=" " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommentGroup.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewComments.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewComments.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-221">
-              <caret line="107" column="27" lean-forward="false" selection-start-line="107" selection-start-column="27" selection-end-line="107" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -140,11 +41,82 @@
       <file leaf-file-name="ViewContent.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewContent.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="373" column="73" lean-forward="false" selection-start-line="373" selection-start-column="73" selection-end-line="373" selection-end-column="73" />
+            <state relative-caret-position="390">
+              <caret line="119" column="13" lean-forward="true" selection-start-line="114" selection-start-column="25" selection-end-line="119" selection-end-column="13" />
               <folding>
                 <element signature="e#36#77#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlogGroups.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/BlogGroups.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-17">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentGroup.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ViewBlogContent.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewBlogContent.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1105">
+              <caret line="65" column="30" lean-forward="false" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlogComponent.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/BlogComponent.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/css/App.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="855">
+              <caret line="488" column="11" lean-forward="false" selection-start-line="488" selection-start-column="11" selection-end-line="488" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="favicon.ico" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/favicon.ico">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/manifest.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -153,10 +125,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tableleft</find>
-      <find>Homepage</find>
       <find>.map</find>
-      <find>deleteBlog</find>
       <find>commentData</find>
       <find>html</find>
       <find>Showdown</find>
@@ -178,11 +147,14 @@
       <find>alert</find>
       <find>style</find>
       <find>please login</find>
-      <find>getAllBlog</find>
       <find>input-sea</find>
       <find>.btn-go</find>
       <find>250px</find>
+      <find>search</find>
+      <find>getAllBlog</find>
+      <find>deleteBlog</find>
       <find>addComment</find>
+      <find>username</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -227,19 +199,20 @@
         <option value="$PROJECT_DIR$/src/properties/properties.jsx" />
         <option value="$PROJECT_DIR$/src/Routes.jsx" />
         <option value="$PROJECT_DIR$/src/utis/setAuthorizationToken.jsx" />
-        <option value="$PROJECT_DIR$/src/components/usercomponent/Login.jsx" />
         <option value="$PROJECT_DIR$/src/Authentication/Auth.jsx" />
         <option value="$PROJECT_DIR$/src/components/usercomponent/Logout.jsx" />
-        <option value="$PROJECT_DIR$/src/App.jsx" />
-        <option value="$PROJECT_DIR$/src/components/viewcomponent/BlogComponent.jsx" />
         <option value="$PROJECT_DIR$/src/components/viewcomponent/Createpost.jsx" />
-        <option value="$PROJECT_DIR$/src/components/viewcomponent/BlogGroups.jsx" />
-        <option value="$PROJECT_DIR$/src/components/viewcomponent/ViewContent.jsx" />
         <option value="$PROJECT_DIR$/src/components/viewcomponent/ViewComments.jsx" />
+        <option value="$PROJECT_DIR$/src/components/usercomponent/Login.jsx" />
+        <option value="$PROJECT_DIR$/src/App.jsx" />
         <option value="$PROJECT_DIR$/src/components/viewcomponent/ViewFrame.jsx" />
         <option value="$PROJECT_DIR$/src/components/headercomponent/Header.jsx" />
-        <option value="$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx" />
+        <option value="$PROJECT_DIR$/src/components/viewcomponent/BlogGroups.jsx" />
         <option value="$PROJECT_DIR$/src/css/App.css" />
+        <option value="$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx" />
+        <option value="$PROJECT_DIR$/src/components/viewcomponent/ViewBlogContent.jsx" />
+        <option value="$PROJECT_DIR$/src/components/viewcomponent/ViewContent.jsx" />
+        <option value="$PROJECT_DIR$/src/components/viewcomponent/BlogComponent.jsx" />
       </list>
     </option>
   </component>
@@ -394,18 +367,18 @@
       <workItem from="1503899725821" duration="104193000" />
       <workItem from="1504337526372" duration="8359000" />
       <workItem from="1504500304694" duration="22000" />
-      <workItem from="1504500477170" duration="65944000" />
+      <workItem from="1504500477170" duration="78047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="219652000" />
+    <option name="totallyTimeSpent" value="231755000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="834" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1134" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297561" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -539,8 +512,8 @@
         <state relative-caret-position="323">
           <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#299#340#0" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#299#340#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -563,18 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="17" selection-end-line="38" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/favicon.ico">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/manifest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -629,14 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewBlogContent.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="54" column="133" lean-forward="false" selection-start-line="54" selection-start-column="82" selection-end-line="54" selection-end-column="133" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/properties/properties.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -665,9 +618,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -695,14 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/usercomponent/Login.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/Tableright-backup.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -721,20 +664,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/usercomponent/Login.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="55" column="27" lean-forward="false" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+          <folding>
+            <element signature="e#34#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/Createpost.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1683">
+          <caret line="99" column="25" lean-forward="false" selection-start-line="99" selection-start-column="25" selection-end-line="99" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#299#340#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/headercomponent/Header.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewComments.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1704">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewFrame.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="96" column="16" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/favicon.ico">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="69" column="66" lean-forward="false" selection-start-line="69" selection-start-column="66" selection-end-line="69" selection-end-column="66" />
+        <state relative-caret-position="583">
+          <caret line="62" column="36" lean-forward="false" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
           <folding>
             <element signature="e#159#200#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="488" column="11" lean-forward="false" selection-start-line="488" selection-start-column="11" selection-end-line="488" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewContent.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="373" column="73" lean-forward="false" selection-start-line="373" selection-start-column="73" selection-end-line="373" selection-end-column="73" />
+        <state relative-caret-position="390">
+          <caret line="119" column="13" lean-forward="true" selection-start-line="114" selection-start-column="25" selection-end-line="119" selection-end-column="13" />
           <folding>
             <element signature="e#36#77#0" expanded="true" />
           </folding>
@@ -743,96 +764,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/BlogGroups.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="56" column="61" lean-forward="true" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <marker date="1504790112708" expanded="true" signature="1291:1437" ph="..." />
-            <marker date="1504790112708" expanded="true" signature="1350:1437" ph="..." />
-            <marker date="1504790112708" expanded="false" signature="1409:1427" ph="..." />
-            <marker date="1504790112708" expanded="true" signature="1536:1543" ph="..." />
-            <marker date="1504790112708" expanded="false" signature="1761:1767" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="1767:1773" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="1773:1779" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="1779:1785" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="1785:1791" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="1791:1797" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="1797:1803" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="1803:1809" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="1809:1815" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="1815:1821" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="1821:1827" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="2055:2061" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="2094:2100" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="2101:2107" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="2108:2114" ph=" " />
-            <marker date="1504790112708" expanded="false" signature="2122:2128" ph=" " />
-          </folding>
+        <state relative-caret-position="-17">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/Createpost.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewBlogContent.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="122" column="57" lean-forward="true" selection-start-line="121" selection-start-column="7" selection-end-line="122" selection-end-column="57" />
+        <state relative-caret-position="1105">
+          <caret line="65" column="30" lean-forward="false" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#299#340#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/BlogComponent.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="41" lean-forward="true" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewFrame.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="117" column="7" lean-forward="false" selection-start-line="117" selection-start-column="4" selection-end-line="124" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/headercomponent/Header.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="52" column="78" lean-forward="false" selection-start-line="52" selection-start-column="78" selection-end-line="52" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/ViewComments.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="107" column="27" lean-forward="false" selection-start-line="107" selection-start-column="27" selection-end-line="107" selection-end-column="27" />
+        <state relative-caret-position="153">
+          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/viewcomponent/CommentGroup.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="193" column="13" lean-forward="false" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>

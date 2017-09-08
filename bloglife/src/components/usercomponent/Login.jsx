@@ -57,7 +57,27 @@ class Login extends Component {
             body:JSON.stringify(data)
         }).then(function(response) {
             console.log(response);
-            return response.json();
+
+            if(response.status == 200) {
+                document.getElementById("error").style.display="none";
+                return response.json();
+            }
+            else if(response.status == 500) {
+               document.getElementById("error").innerHTML="User does not exist. Please sign up";
+                document.getElementById("error").style.display="block";
+               return;
+            }
+            else if(response.status == 401){
+                document.getElementById("error").innerHTML="Password entered is wrong";
+                document.getElementById("error").style.display="block";
+                return;
+            }
+            else {
+                document.getElementById("error").innerHTML="Something Wrong";
+                document.getElementById("error").style.display="block";
+                return;
+            }
+
         }).then(function(data) {
             console.log(data.token);
 
@@ -79,12 +99,13 @@ class Login extends Component {
                  </div>
 
                  <div className="container">
-                 <label><b>Username</b></label>
-                       <input type="text" id="username"  name="username" placeholder="Username" value={this.state.username} onChange={this.changeUserData}/>
-                  <label><b>Password</b></label>
-                       <input type="password" id="password" name="password" value={this.state.password}  onChange={this.changeUserData} placeholder="Password"/>
-                                     <button type="submit" onClick={this.sendCredentials}>Submit</button>
-                             </div>
+                     <label><b>Username</b></label>
+                     <input type="text" id="username"  name="username" placeholder="Username" value={this.state.username} onChange={this.changeUserData}/>
+                     <label><b>Password</b></label>
+                     <input type="password" id="password" name="password" value={this.state.password}  onChange={this.changeUserData} placeholder="Password"/>
+                     <div id="error" style={{'display':'none','color':'red','text-align':'center'}}></div>
+                      <button type="submit" onClick={this.sendCredentials}>Submit</button>
+                 </div>
 
                  <div className="container">
                    <span className="psw">Forgot <a href="#">password?</a></span>

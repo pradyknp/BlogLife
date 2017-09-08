@@ -62,7 +62,6 @@ public class BlogActionImpl implements BlogAction {
 		if (blogOld == null)
 			throw new BlogNotFoundException();
 
-		blogDAO.deleteBlogUsingID(blogOld.getId());
 		blogDAO.save(blog);
 
 		return blog;
@@ -168,7 +167,6 @@ public class BlogActionImpl implements BlogAction {
 		if (blog == null)
 			throw new BlogNotFoundException();
 
-		blogDAO.deleteBlogUsingID(blog.getId());
 		blog.setLikes();
 		blogDAO.save(blog);
 
@@ -183,7 +181,6 @@ public class BlogActionImpl implements BlogAction {
 		if (blog == null)
 			throw new BlogNotFoundException();
 
-		blogDAO.deleteBlogUsingID(blog.getId());
 		blog.setUnLikes();
 		blogDAO.save(blog);
 
@@ -196,7 +193,6 @@ public class BlogActionImpl implements BlogAction {
 		if (blog == null)
 			throw new BlogNotFoundException();
 
-		blogDAO.deleteBlogUsingID(blog.getId());
 		blog.setDislikes();
 		blogDAO.save(blog);
 
@@ -210,7 +206,6 @@ public class BlogActionImpl implements BlogAction {
 		if (blog == null)
 			throw new BlogNotFoundException();
 
-		blogDAO.deleteBlogUsingID(blog.getId());
 		blog.setUnDislikes();
 		blogDAO.save(blog);
 

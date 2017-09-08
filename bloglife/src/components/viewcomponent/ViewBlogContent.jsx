@@ -4,7 +4,7 @@ import {stateToHTML} from 'draft-js-export-html';
 
 
 
-class ShowBlog extends Component {
+class viewBlogContent extends Component {
 
     constructor(props){
         super(props);
@@ -63,5 +63,5 @@ render() {
     }
 }
 
-export default ShowBlog;
+export default viewBlogContent;
 

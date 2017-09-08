@@ -157,7 +157,6 @@ public class BlogRootResource {
 	
 	@POST
 	@Path("blog/{blogId}/like")
-	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	@JWTTokenNeeded
 	public Response addLike(@PathParam("blogId") int blogId) {
@@ -167,7 +166,6 @@ public class BlogRootResource {
 
 	@POST
 	@Path("blog/{blogId}/unlike")
-	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	@JWTTokenNeeded
 	public Response addUnLike(@PathParam("blogId") int blogId) {
@@ -177,7 +175,6 @@ public class BlogRootResource {
 
 	@POST
 	@Path("blog/{blogId}/dislike")
-	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	@JWTTokenNeeded
 	public Response addDisLike(@PathParam("blogId") int blogId) {
@@ -187,7 +184,6 @@ public class BlogRootResource {
 
 	@POST
 	@Path("blog/{blogId}/undislike")
-	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	@JWTTokenNeeded
 	public Response addUnDisLike(@PathParam("blogId") int blogId) {

@@ -87,13 +87,16 @@ public class BlogActionImpl implements BlogAction {
 			pageno=1;
 			pagesize=5;
 		}
-			
 		
-		if(total/pagesize < pageno ){
+		if (total < pagesize) {
+			startIndex = 0;
+			lastIndex = total;
+			
+		} else if(total/pagesize < pageno ){
 			startIndex=(total/pagesize-1)*pagesize;
 			lastIndex= startIndex+(total%pagesize);
 		}
-		else if (pageno != 0 && pagesize != 0) {
+		else {
 			startIndex = (pageno - 1) * 5;
 			lastIndex = startIndex + pagesize;
 		}
@@ -112,7 +115,11 @@ public class BlogActionImpl implements BlogAction {
 
 		int total = (int) totalCount(category,null);
 
-		if (total / pagesize < pageno) {
+		if (total < pagesize) {
+			startIndex = 0;
+			lastIndex = total;
+			
+		} else if (total / pagesize < pageno) {
 			startIndex = (total / pagesize - 1) * pagesize;
 			lastIndex = startIndex + (total % pagesize);
 		} else if (pageno != 0 && pagesize != 0) {

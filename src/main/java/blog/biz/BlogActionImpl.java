@@ -52,7 +52,7 @@ public class BlogActionImpl implements BlogAction {
 				|| blog.getTitle().trim().length() > 64 || blog.getBody().trim().length() == 0 )
 			throw new InvalidBlogException();
 
-		blogDAO.save(blog);
+		blogDAO.create(blog);
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class BlogActionImpl implements BlogAction {
 	@Override
 	public Blog view(int blogId) throws DuplicateBlogException, InvalidBlogException, BlogException {
 
-		Blog blog = (Blog) blogDAO.get(blogId);
+		Blog blog = blogDAO.getBlog(blogId);
 		if (blog == null)
 			throw new BlogNotFoundException();
 

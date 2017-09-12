@@ -49,7 +49,7 @@ public class BlogActionImpl implements BlogAction {
 	public void post(Blog blog) throws DuplicateBlogException, InvalidBlogException, BlogException {
 
 		if (blog == null || blog.getId() < 1 || blog.getTitle() == null || blog.getTitle().trim().length() == 0
-				|| blog.getTitle().trim().length() > 64 || blog.getBody().trim().length() == 0)
+				|| blog.getTitle().trim().length() > 64 || blog.getBody().trim().length() == 0 )
 			throw new InvalidBlogException();
 
 		blogDAO.save(blog);
@@ -57,7 +57,7 @@ public class BlogActionImpl implements BlogAction {
 
 	@Override
 	public Blog updateBlog(Blog blog) throws BlogNotFoundException, InvalidBlogException, BlogException {
-		Blog blogOld = (Blog) blogDAO.get(blog.getId());
+		Blog blogOld = blogDAO.getBlog(blog.getId());
 
 		if (blogOld == null)
 			throw new BlogNotFoundException();

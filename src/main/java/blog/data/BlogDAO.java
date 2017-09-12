@@ -38,6 +38,14 @@ public class BlogDAO extends BasicDAO<Blog, Integer> {
 		return null;
 	}
 	
+	public void create(Blog blog){
+		save(blog);
+	}
+	
+	public Blog getBlog(int blogId){
+		return get(blogId);
+	}
+	
 	public long getCount (String category){
 		Query<Blog> query = createQuery().field("category").containsIgnoreCase(category);
 		return query.count();

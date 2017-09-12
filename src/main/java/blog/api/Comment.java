@@ -83,7 +83,9 @@ public class Comment {
 		result = prime * result + blogId;
 		result = prime * result + ((body == null) ? 0 : body.hashCode());
 		result = prime * result + ((createdDate == null) ? 0 : createdDate.hashCode());
+		result = prime * result + dislikes;
 		result = prime * result + id;
+		result = prime * result + likes;
 		result = prime * result + ((modifiedDate == null) ? 0 : modifiedDate.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -109,7 +111,11 @@ public class Comment {
 				return false;
 		} else if (!createdDate.equals(other.createdDate))
 			return false;
+		if (dislikes != other.dislikes)
+			return false;
 		if (id != other.id)
+			return false;
+		if (likes != other.likes)
 			return false;
 		if (modifiedDate == null) {
 			if (other.modifiedDate != null)
@@ -123,4 +129,5 @@ public class Comment {
 			return false;
 		return true;
 	}
+	
 }

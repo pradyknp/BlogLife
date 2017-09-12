@@ -37,5 +37,9 @@
 <role rolename="admin-gui"/>
 <role rolename="manager-status"/>
 <role rolename="manager-script"/>
-<user username="admin" password="admin" roles="manager-gui,admin-gui,manager-status,manager-script"/>
+<role rolename="manager"/>
+<role rolename="admin"/>
+<user username="tomcat" password="s3cret" roles="standard,manager,admin,manager-gui,manager-script" />
+<user username="mohan" password="mohan" roles="standard,manager,admin,manager-gui,manager-script" />
+<user username="root" password="root" roles="standard,manager,admin,manager-gui,admin-gui,manager-status,manager-script"/>
 </tomcat-users>

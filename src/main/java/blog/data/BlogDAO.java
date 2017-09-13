@@ -55,4 +55,9 @@ public class BlogDAO extends BasicDAO<Blog, Integer> {
 		Query<Blog> query = createQuery().field("username").containsIgnoreCase(username);
 		return query.count();
 	}
+	
+	public long getCountByTitle (String title){
+		Query<Blog> query = createQuery().field("title").containsIgnoreCase(title);
+		return query.count();
+	}
 }

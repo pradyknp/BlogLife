@@ -23,45 +23,49 @@ constructor(props){
             sidebar: () => <div><b>Filtered By View All</b></div>,
             main: () => <ViewContent categoryProps="getAll"/>
           },
-          { path: '/category/Entertainment',
+          { path: '/BlogLife/category/Entertainment',
             sidebar: () => <div><b>Filtered By Entertainment</b></div>,
             main: () => <ViewContent categoryProps="entertainment"/>
           },
-           { path: '/category/politics',
+           { path: '/BlogLife/category/politics',
             sidebar: () => <div><b>Filtered By Politics</b></div>,
              main: () => <ViewContent categoryProps="politics"/>
          },
-          { path: '/category/travel',
+          { path: '/BlogLife/category/travel',
             sidebar: () => <div><b>Filtered By Travel</b></div>,
             main: () => <ViewContent categoryProps="travel"/>
           },
-          { path: '/category/history',
+          { path: '/BlogLife/category/history',
            sidebar: () => <div><b>Filtered By History</b></div>,
            main: () => <ViewContent categoryProps="history"/>
           },
-          { path: '/category/finance',
+          { path: '/BlogLife/category/finance',
            sidebar: () => <div><b>Filtered By Finance</b></div>,
            main: () => <ViewContent categoryProps="finance"/>
           },
-          { path: '/category/healthcare',
+          { path: '/BlogLife/category/healthcare',
             sidebar: () => <div><b>Filtered By HealthCare</b></div>,
             main: () => <ViewContent categoryProps="healthcare"/>
            },
-          { path: '/category/humanresources',
+          { path: '/BlogLife/category/humanresources',
            sidebar: () => <div><b>Filter By Human Resources</b></div>,
            main: () => <ViewContent categoryProps="humanresources"/>
             },
-           { path: '/category/business',
+           { path: '/BlogLife/category/business',
              sidebar: () => <div><b>Filter By Business</b></div>,
              main: () => <ViewContent categoryProps="business"/>
            },
-            { path: '/category/general',
+            { path: '/BlogLife/category/general',
                  sidebar: () => <div><b>Filter By General</b></div>,
               main: () => <ViewContent categoryProps="general"/>
             },
-            { path: '/myblogs',
+            { path: '/BlogLife/myblogs',
                 sidebar: () => <div><b>Filtered By MyBlogs</b></div>,
                 main: () => <ViewContent categoryProps="getByUser" />
+            },
+            { path: '/BlogLife/category/title/*',
+                sidebar: () => <div><b>Filtered By Title</b></div>,
+                main: () => <ViewContent categoryProps="getByTitle" />
             },
 
         ]
@@ -100,15 +104,15 @@ return(
         <ul style={{ listStyleType: 'none', padding: '0px 0px 0px 10px' }}>
 
           <li className="category"><Link to="/BlogLife">View All</Link></li><br/>
-          <li className="category"><Link to="/category/entertainment">Entertainment</Link></li><br/>
-          <li className="category"><Link to="/category/politics">Politics</Link></li><br/>
-          <li className="category" ><Link to="/category/travel">Travel</Link></li><br/>
-          <li className="category"><Link to="/category/history">History</Link></li><br/>
-          <li className="category"><Link to="/category/finance">Finance</Link></li><br/>
-          <li className="category"><Link to="/category/healthcare">HealthCare</Link></li><br/>
-          <li className="category"><Link to="/category/humanresources">Human Resources</Link></li><br/>
-          <li className="category"><Link to="/category/business">Business</Link></li><br/>
-          <li className="category"><Link to="/category/general">General</Link></li><br/>
+          <li className="category"><Link to="/BlogLife/category/entertainment">Entertainment</Link></li><br/>
+          <li className="category"><Link to="/BlogLife/category/politics">Politics</Link></li><br/>
+          <li className="category" ><Link to="/BlogLife/category/travel">Travel</Link></li><br/>
+          <li className="category"><Link to="/BlogLife/category/history">History</Link></li><br/>
+          <li className="category"><Link to="/BlogLife/category/finance">Finance</Link></li><br/>
+          <li className="category"><Link to="/BlogLife/category/healthcare">HealthCare</Link></li><br/>
+          <li className="category"><Link to="/BlogLife/category/humanresources">Human Resources</Link></li><br/>
+          <li className="category"><Link to="/BlogLife/category/business">Business</Link></li><br/>
+          <li className="category"><Link to="/BlogLife//category/general">General</Link></li><br/>
 
 
         </ul>

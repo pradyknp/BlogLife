@@ -99,9 +99,9 @@ class Login extends Component {
 
                  <div className="container">
                      <label><b>Username</b></label>
-                     <input type="text" id="username"  name="username" placeholder="Username" value={this.state.username} onChange={this.changeUserData}/>
+                     <input type="text" id="username"  name="username" placeholder="Username"  onChange={this.changeUserData}/>
                      <label><b>Password</b></label>
-                     <input type="password" id="password" name="password" value={this.state.password}  onChange={this.changeUserData} placeholder="Password"/>
+                     <input type="password" id="password" name="password"  onChange={this.changeUserData} placeholder="Password"/>
                      <div id="error" style={{'display':'none','color':'red','text-align':'center'}}></div>
                       <button type="submit" onClick={this.sendCredentials}>Submit</button>
                  </div>

@@ -91,7 +91,7 @@ class ViewContent extends Component {
 
         var routes =[
             {
-                path: '/Blog/'+childdata.title.split(" ").join("_"),
+                path: '/BlogLife/Blog/'+childdata.title.split(" ").join("_"),
                 exact: true,
                 main: () => <BlogComponent blogData={this.state.blogData}/>
             }];

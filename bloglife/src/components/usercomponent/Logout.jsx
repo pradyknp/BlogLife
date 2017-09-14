@@ -7,8 +7,8 @@ class Logout extends Component {
     constructor(props){
         super(props);
         this.state={
-            // url:window.location.origin+"/BlogLife/Blogit",
-            url:'http://localhost:7777/BlogLife/Blogit'
+            url:window.location.origin+"/BlogLife/Blogit",
+            //url:'http://localhost:7777/BlogLife/Blogit'
         }
         this.logged = false;
     }
@@ -16,7 +16,6 @@ class Logout extends Component {
 
     componentWillMount() {
 
-        var local=this;
         var token = "";
         var user =""
         if (Auth.isUserAuthenticated()) {
@@ -47,8 +46,8 @@ class Logout extends Component {
             Auth.deauthenticateUser();
             if(response.status === 200)
                 console.log("success");
-            local.loggedout = true;
-            // window.location.href="/BlogLife";
+ 
+             window.location.href="/BlogLife";
         }).catch(function (err) {
             console.log(err);
         });

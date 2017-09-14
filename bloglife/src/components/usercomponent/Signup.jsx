@@ -45,7 +45,7 @@ class Signup extends Component {
             return response.json();
         }).then(function(data) {
             console.log("success");
-            window.location = "/Login";
+            window.location = "/BlogLife/Login";
         }).catch(function(err) {
             console.log(err);
         });

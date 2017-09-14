@@ -63,7 +63,7 @@ constructor(props){
                 sidebar: () => <div><b>Filtered By MyBlogs</b></div>,
                 main: () => <ViewContent categoryProps="getByUser" />
             },
-            { path: '/BlogLife/category/title/*',
+            { path: '/BlogLife/category/title/',
                 sidebar: () => <div><b>Filtered By Title</b></div>,
                 main: () => <ViewContent categoryProps="getByTitle" />
             },

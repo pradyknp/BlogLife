@@ -112,7 +112,7 @@ return(
           <li className="category"><Link to="/BlogLife/category/healthcare">HealthCare</Link></li><br/>
           <li className="category"><Link to="/BlogLife/category/humanresources">Human Resources</Link></li><br/>
           <li className="category"><Link to="/BlogLife/category/business">Business</Link></li><br/>
-          <li className="category"><Link to="/BlogLife//category/general">General</Link></li><br/>
+          <li className="category"><Link to="/BlogLife/category/general">General</Link></li><br/>
 
 
         </ul>

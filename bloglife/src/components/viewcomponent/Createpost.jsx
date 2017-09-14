@@ -100,15 +100,15 @@ class Createpost extends Component {
     componentDidUpdate(){
         var categorySelection = document.getElementById("category");
 
-        this.state.options.map ((category,id) =>
-        {
-            var newOption = document.createElement("option");
-            newOption.label = category.label;
-            newOption.value = category.value;
-            categorySelection.appendChild(newOption);
+        if(categorySelection != null) {
+            this.state.options.map((category, id) => {
+                    var newOption = document.createElement("option");
+                    newOption.label = category.label;
+                    newOption.value = category.value;
+                    categorySelection.appendChild(newOption);
+                }
+            );
         }
-        );
-
     }
 
     submitBlog(){

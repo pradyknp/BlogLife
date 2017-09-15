@@ -25,6 +25,7 @@ class Createpost extends Component {
         this.state = {
             editorState: EditorState.createEmpty(),
             blogCount:1,
+            createdBlog:false,
             title:"title",
             url:window.location.origin+"/BlogLife/Blogit",
             category:"entertainment",
@@ -76,6 +77,7 @@ class Createpost extends Component {
         this.toggleBlockType = (type) => this._toggleBlockType(type);
         this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
         this.submitBlog=this.submitBlog.bind(this);
+        this.goBackToCreatePost = this.goBackToCreatePost.bind(this);
     }
 
     componentWillMount() {
@@ -119,11 +121,22 @@ class Createpost extends Component {
         console.log(html);
         var title = document.getElementById("title").value;
         var category = document.getElementById("category").value;
+        var local = this;
 
         var date = new Date();
         var dateString = date.toString().split("GMT")[0];
         var token = "";
         var username ="";
+
+        if(title == ""){
+            alert("please enter title for the blog");
+            return;
+        }
+
+        if(html === ""){
+            alert("please enter content for the blog");
+            return;
+        }
 
         if (Auth.isUserAuthenticated()) {
             token = Auth.getToken();
@@ -165,10 +178,19 @@ class Createpost extends Component {
         }).then(function(data) {
 
             console.log("success");
-            window.location.href = "/BlogLife";
+            local.setState({
+                createdBlog:true
+        });
+            // window.location.href = "/BlogLife";
 
         }).catch(function(err) {
             console.log(err);
+        });
+    }
+
+    goBackToCreatePost(){
+        this.setState({
+            createdBlog: false
         });
     }
 
@@ -218,43 +240,54 @@ class Createpost extends Component {
             }
         }
 
-        return (
-            <div>
-            <div className="container">
-                <label><b>Title</b></label>
-                <input type="text" id="title"   placeholder="Title"/>
-                <label><b>Category</b></label><br/>
-                <select style={{'padding':'10px','width':'100%'}} name="blogCategory"  id="category">
-                </select>
-            </div>
-            <div className="RichEditor-root">
-                <BlockStyleControls
-                    editorState={editorState}
-                    onToggle={this.toggleBlockType}
-                />
-                <InlineStyleControls
-                    editorState={editorState}
-                    onToggle={this.toggleInlineStyle}
-                />
-                <div className={className} onClick={this.focus}>
-                    <Editor
-                        blockStyleFn={getBlockStyle}
-                        customStyleMap={styleMap}
-                        editorState={editorState}
-                        handleKeyCommand={this.handleKeyCommand}
-                        onChange={this.onChange}
-                        onTab={this.onTab}
-                        placeholder="Tell a story..."
-                        ref="editor"
-                        spellCheck={true}
-                    />
+        if(!this.state.createdBlog) {
+            return (
+                <div>
+                    <div className="container">
+                        <label><b>Title</b></label>
+                        <input type="text" id="title" placeholder="Title"/>
+                        <label><b>Category</b></label><br/>
+                        <select style={{'padding': '10px', 'width': '100%'}} name="blogCategory" id="category">
+                        </select>
+                    </div>
+                    <div className="RichEditor-root">
+                        <BlockStyleControls
+                            editorState={editorState}
+                            onToggle={this.toggleBlockType}
+                        />
+                        <InlineStyleControls
+                            editorState={editorState}
+                            onToggle={this.toggleInlineStyle}
+                        />
+                        <div className={className} onClick={this.focus}>
+                            <Editor
+                                blockStyleFn={getBlockStyle}
+                                customStyleMap={styleMap}
+                                editorState={editorState}
+                                handleKeyCommand={this.handleKeyCommand}
+                                onChange={this.onChange}
+                                onTab={this.onTab}
+                                placeholder="Tell a story..."
+                                ref="editor"
+                                spellCheck={true}
+                            />
+                        </div>
+                    </div>
+                    <div className="container">
+                        <button type="submit" onClick={this.submitBlog}>Blog It !!!</button>
+                    </div>
                 </div>
-            </div>
-                <div  className="container">
-                    <button type="submit" onClick={this.submitBlog}>Blog It !!!</button>
+            );
+        }
+        else{
+            return(
+                <div>
+                    <div>
+                        <p className="succBlogPost">The blog has been posted successfully!!! . please visit the homepage to view the blogs.</p></div>
+                    <button className="goBack" onClick={this.goBackToCreatePost}>GO Back</button>
                 </div>
-            </div>
-        );
+            )
+        }
     }
 }
 

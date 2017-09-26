@@ -15,6 +15,21 @@ class Signup extends Component {
         var pwd = document.getElementById("password").value;
         var confirmpassword =  document.getElementById("confirmpassword").value;
 
+        if(mailid === ""){
+            alert("Please enter the mailid");
+            return;
+        }
+
+        if(username === ""){
+            alert("Please enter the username");
+            return;
+        }
+
+        if(pwd === ""){
+            alert("Please enter the username");
+            return;
+        }
+
         if(pwd !== confirmpassword){
             alert("passwords did not match. please re-type the password");
             document.getElementById("pwd").value="";
@@ -45,7 +60,7 @@ class Signup extends Component {
             return response.json();
         }).then(function(data) {
             console.log("success");
-            window.location = "/Login";
+            window.location = "/BlogLife/Login";
         }).catch(function(err) {
             console.log(err);
         });

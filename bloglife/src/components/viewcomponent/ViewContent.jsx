@@ -29,6 +29,7 @@ class ViewContent extends Component {
             blogcount:0,
             pageSize:5,
             pageNo:1,
+            title:"",
             username:Auth.getUser(),
             blogRoute:[],
             blogData:{
@@ -50,8 +51,13 @@ class ViewContent extends Component {
             if (this.props.categoryProps === "getAll") {
                 this.getAllBlog(this.state.blogcount,pageNo,pageSize, this.state.category);
             }
-            else {
-                this.getBlogByCategory(this.state.blogcount, pageNo, pageSize,  this.state.category);
+            else if(this.props.categoryProps === "getByTitle"){
+                this.getBlogsbyTitle(pageNo,pageSize,this.state.title)
+            } else if(this.props.categoryProps === "getByUser"){
+                this.getBlogsByUser( pageNo, pageSize, this.state.username);
+            }
+            else{
+                this.getBlogByCategory( pageNo, pageSize,  this.state.category);
             }
         }
 
@@ -67,6 +73,11 @@ class ViewContent extends Component {
             if (this.props.categoryProps ==="getAll") {
                 this.getAllBlog(this.state.blogcount,pageNo, pageSize, this.props.categoryProps);
             }
+            else if(this.props.categoryProps === "getByTitle"){
+                this.getBlogsbyTitle(pageNo,pageSize,this.state.title)
+            }else if(this.props.categoryProps === "getByUser"){
+                this.getBlogsByUser( pageNo, pageSize, this.state.username);
+            }
             else {
                 this.getBlogByCategory(this.state.blogcount, pageNo, pageSize, this.props.categoryProps);
             }
@@ -80,7 +91,7 @@ class ViewContent extends Component {
 
         var routes =[
             {
-                path: '/Blog/'+childdata.title.split(" ").join("_"),
+                path: '/BlogLife/Blog/'+childdata.title.split(" ").join("_"),
                 exact: true,
                 main: () => <BlogComponent blogData={this.state.blogData}/>
             }];
@@ -136,11 +147,14 @@ class ViewContent extends Component {
                     if (this.props.categoryProps === "getAll") {
                         this.getAllBlog(blogCount,pageNo, pageSize, this.state.category);
                     }
+                    else if(this.props.categoryProps === "getByTitle"){
+                        this.getBlogsbyTitle(pageNo,pageSize,this.state.title)
+                    }
                     else if(this.props.categoryProps === "getByUser"){
-                        this.getBlogsByUser(blogCount, pageNo, pageSize, this.state.username);
+                        this.getBlogsByUser( pageNo, pageSize, this.state.username);
                     }
                     else{
-                        this.getBlogByCategory(blogCount, pageNo, pageSize, this.state.category);
+                        this.getBlogByCategory(pageNo, pageSize, this.state.category);
                     }
                 }
                 else{
@@ -204,7 +218,7 @@ class ViewContent extends Component {
             });
     }
 
-    getBlogByCategory(totalCount,pageno,pagesize,category){
+    getBlogByCategory(pageno,pagesize,category){
         var url = `${this.state.url}/blog/category?pageno=`+pageno+`&pagesize=`+pagesize+`&search=`+category;
 
         console.log(url);
@@ -232,7 +246,7 @@ class ViewContent extends Component {
                     isLoadingAll:true,
                     category:this.props.categoryProps,
                     dataSource: responseJson,
-                    blogcount:totalCount,
+                    blogcount:responseJson.length,
                     pageNo:pageno,
                     blogRoute:routes
 
@@ -246,7 +260,7 @@ class ViewContent extends Component {
             });
     }
 
-    getBlogsByUser(totalCount,pageno,pagesize,username){
+    getBlogsByUser(pageno,pagesize,username){
         var url = `${this.state.url}/blog/user/`+username+`?pageno=`+pageno+`&pagesize=`+pagesize;
 
         console.log(url);
@@ -274,9 +288,52 @@ class ViewContent extends Component {
                     isLoadingAll:true,
                     category:this.props.categoryProps,
                     dataSource: responseJson,
-                    blogcount:totalCount,
+                    blogcount:responseJson.length,
                     pageNo:pageno,
                     blogRoute:routes
+
+                }, function () {
+                    // do something with new state
+                });
+                console.log(this.state.blogcount);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+    getBlogsbyTitle(pageno,pagesize,title){
+        var url = `${this.state.url}/blog/title/?search=`+title+`&pageno=`+pageno+`&pagesize=`+pagesize;
+
+        console.log(url);
+
+        return fetch(url)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log("Inside responseJSON");
+                console.log(responseJson[0])
+
+                var routes =[];
+                responseJson.map((route, index) => (
+                    // Render more <Route>s with the same paths as
+                    // above, but different components this time.
+                    routes[index]={
+                        path:`/Blog/${route.title}`.split(" ").join("_"),
+                        exact:true,
+                        main: () => <BlogComponent blogData={route}/>
+                    }
+                ));
+
+
+                this.setState({
+                    isLoading: false,
+                    isLoadingAll:true,
+                    category:this.props.categoryProps,
+                    dataSource: responseJson,
+                    blogcount:responseJson.length,
+                    pageNo:pageno,
+                    blogRoute:routes,
+                    title:title
 
                 }, function () {
                     // do something with new state
@@ -293,7 +350,15 @@ class ViewContent extends Component {
         var totalCount=0;
         var url=""
         console.log("Inside Mount");
-        if(this.props.categoryProps !== "getByUser") {
+        if(this.props.categoryProps === "getByTitle") {
+            this.getBlogsbyTitle(1,this.state.pageSize,decodeURI(window.location.href.split("title/")[1]))
+        }
+        else if(this.props.categoryProps === "getByUser"){
+            console.log("filter by user");
+            var username = this.state.username;
+            this.getBlogsByUser( 1, this.state.pageSize,username);
+        }
+        else{
             url = `${this.state.url}/blog/blogCount?category=${this.props.categoryProps}`;
             fetch(url)
                 .then((response) => response.json())
@@ -309,7 +374,7 @@ class ViewContent extends Component {
                         }
                         else {
                             console.log(pageSize)
-                            this.getBlogByCategory(totalCount, pageNo, pageSize, this.props.categoryProps);
+                            this.getBlogByCategory( pageNo, pageSize, this.props.categoryProps);
                         }
                     }
                     else {
@@ -322,37 +387,12 @@ class ViewContent extends Component {
                     console.error(error);
                 });
         }
-        else{
-            console.log("filter by user");
-            var username = this.state.username;
-            url = `${this.state.url}/blog/blogCount?username=`+username;
-            fetch(url)
-                .then((response) => response.json())
-                .then((responseJson) => {
-                    console.log("Inside blogCount");
-                    totalCount = responseJson;
-                    console.log(totalCount);
-                    var pageNo = 1;
-                    var pageSize = (totalCount - (this.state.pageSize * (pageNo - 1))) >= this.state.pageSize ? this.state.pageSize : totalCount % this.state.pageSize;
-                    if (totalCount > 0) {
-                       this.getBlogsByUser(totalCount, pageNo, pageSize,username)
-                    }
-                    else {
-                        this.setState({
-                            isLoading: false,
-                        })
-                    }
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-        }
     }
+
 
     componentDidUpdate() {
         var blogAll = document.getElementById("displayBlogPagination");
         var blogindividual =  document.getElementById("individualBlogData");
-        console.log(blogAll);
 
         if(blogAll != null)
             blogAll.style.display="block";
@@ -364,6 +404,20 @@ class ViewContent extends Component {
 
 
     render() {
+
+        var disabledInc =false;
+        var disabledDec = false;
+
+        if((this.state.totalBlogCount-((this.state.pageNo-1)*this.state.pageSize)) < this.state.pageSize)
+        {
+            disabledInc=true;
+        }
+
+        if(this.state.pageNo === 1){
+            disabledDec=true;
+        }
+        console.log("disabled:"+disabledInc)
+
         if(this.state.isLoading){
         // if(true){
                 return (
@@ -396,8 +450,8 @@ class ViewContent extends Component {
                                         <br/>
                                         <br/>
                                         <div className="paginationContainer">
-                                            <button type="submit"  id="pageDec" style={{'width':'45px'}} onClick={this.paginationDec}> &laquo;</button>
-                                            <button type="submit"  id="pageInc" style={{'marginLeft':'2px','width':'45px'}} onClick={this.paginationInc}>&raquo;</button>
+                                            <button type="submit" disabled={disabledDec}  id="pageDec" style={{'width':'45px'}} onClick={this.paginationDec}> &laquo;</button>
+                                            <button type="submit" disabled={disabledInc}  id="pageInc" style={{'marginLeft':'2px','width':'45px'}} onClick={this.paginationInc}>&raquo;</button>
                                         </div>
                                     </div>
                                     <div id="individualBlogData">

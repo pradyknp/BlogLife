@@ -32,7 +32,7 @@ public class BlogActionImpl implements BlogAction {
 	// IBlogViewDAO dao = new InMemoryBlogDAO();
 	// IBlogViewDAO dao = new MongoDAOImpl();
 
-	MongoClient mongoClient = new MongoClient("192.168.99.100:32768"); // 27017
+	MongoClient mongoClient = new MongoClient("172.31.45.12"); // 27017
 	Morphia morphia = new Morphia();
 	String databaseName = "blogview";
 	Datastore datastore = morphia.createDatastore(mongoClient, databaseName);
@@ -138,7 +138,16 @@ public class BlogActionImpl implements BlogAction {
 	@Override
 	public List<Blog> findByUserName(String userName, int pageno, int pagesize)
 			throws BlogNotFoundException, InvalidBlogException, BlogException {
-		if (pageno != 0 && pagesize != 0) {
+		int total = (int) totalCount(null,userName);
+
+		if (total < pagesize) {
+			startIndex = 0;
+			lastIndex = total;
+			
+		} else if (total / pagesize < pageno) {
+			startIndex = (total / pagesize - 1) * pagesize;
+			lastIndex = startIndex + (total % pagesize);
+		} else if (pageno != 0 && pagesize != 0) {
 			startIndex = (pageno - 1) * 5;
 			lastIndex = startIndex + pagesize;
 		}
@@ -154,7 +163,16 @@ public class BlogActionImpl implements BlogAction {
 	@Override
 	public List<Blog> findByTitle(String title, int pageno, int pagesize)
 			throws BlogNotFoundException, InvalidBlogException, BlogException {
-		if (pageno != 0 && pagesize != 0) {
+		
+		int total = (int) totalCountBytitle(title);
+		if (total < pagesize) {
+			startIndex = 0;
+			lastIndex = total;
+			
+		} else if (total / pagesize < pageno) {
+			startIndex = (total / pagesize - 1) * pagesize;
+			lastIndex = startIndex + (total % pagesize);
+		} else if (pageno != 0 && pagesize != 0) {
 			startIndex = (pageno - 1) * 5;
 			lastIndex = startIndex + pagesize;
 		}
@@ -316,7 +334,13 @@ public class BlogActionImpl implements BlogAction {
 			return blogDAO.getCountByUser(username);
 		}
 	}
-
+	
+	@Override
+	public long totalCountBytitle(String title) throws BlogNotFoundException, BlogException {
+			return blogDAO.getCountByTitle(title);
+	}
+	
+	
 	@Override
 	public TokenDao getTokenDAO() {
 		return tokenDAO;

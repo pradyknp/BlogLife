@@ -494,3 +494,34 @@ span.psw {
     align-items: center;
     align-self: center;
 }
+
+button[disabled], html input[disabled] {
+    cursor: default;
+    opacity:0.5;
+}
+
+
+
+.succBlogPost {
+    text-align: center;
+    font-size: x-large;
+    font-family: cursive;
+    font-weight: 200;
+    left: 0;
+    line-height: 200px;
+    margin: auto;
+    margin-top: -100px;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+}
+
+.goBack{
+    margin: auto;
+    margin-top: -100px;
+    position: absolute;
+    top: 70%;
+    width: 60px;
+    left: 50%;
+    line-height: 20px;
+}

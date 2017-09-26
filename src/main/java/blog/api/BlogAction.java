@@ -64,4 +64,6 @@ public interface BlogAction {
 	String issueAndStoreToken(String userName);
 
 	boolean authenticateUser(User user) throws UserNotFoundException, UserException;
+	
+	long totalCountBytitle(String title)  throws BlogNotFoundException,BlogException;
 }

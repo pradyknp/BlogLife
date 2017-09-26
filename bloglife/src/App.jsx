@@ -60,13 +60,13 @@ class App extends Component {
             <div >
                 <Header loggedinProp={this.state.isloggedin} />
                 <Route exact path='/BlogLife' component={ViewFrame} />
-                <Route exact path='/myblogs' component={ViewFrame} />
-                <Route exact path='/category/*' component={ViewFrame} />
-                <Route exact path='/Createpost' component={Createpost} />
-                <Route exact path='/Login' component={Login} />
-                <Route exact path='/Logout' component={Logout} />
-                <Route exact path='/Signup' component={Signup} />
-                <Route exact path='/Blog/*' component={ViewContent} />
+                <Route exact path='/BlogLife/myblogs' component={ViewFrame} />
+                <Route exact path='/BlogLife/category/*' component={ViewFrame} />
+                <Route exact path='/BlogLife/Createpost' component={Createpost} />
+                <Route exact path='/BlogLife/Login' component={Login} />
+                <Route exact path='/BlogLife/Logout' component={Logout} />
+                <Route exact path='/BlogLife/Signup' component={Signup} />
+                <Route exact path='/BlogLife/Blog/*' component={ViewContent} />
                 <Route exact path="/LaunchBlog" render={routeProps => <LaunchBlog {...routeProps} blogGetter={this.props.componentData} />}/>
                {/* <Footer/>*/}
             </div>

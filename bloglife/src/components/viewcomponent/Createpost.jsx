@@ -103,6 +103,7 @@ class Createpost extends Component {
         var categorySelection = document.getElementById("category");
 
         if(categorySelection != null) {
+			categorySelection.options.length=0;
             this.state.options.map((category, id) => {
                     var newOption = document.createElement("option");
                     newOption.label = category.label;
